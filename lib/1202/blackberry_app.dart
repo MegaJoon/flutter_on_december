@@ -24,7 +24,7 @@ class _BlackberryAppState extends State<BlackberryApp> {
   int _currentIndex = 0;
 
   // bottom tab onClicked Function
-  void _onPressed(int num){
+  void _onPressed(int num) {
     setState(() {
       _currentIndex = num;
     });
@@ -34,7 +34,7 @@ class _BlackberryAppState extends State<BlackberryApp> {
   int _selectedIndex = 0;
 
   // tab onClicked Function
-  void _onTap(int num){
+  void _onTap(int num) {
     setState(() {
       _selectedIndex = num;
     });
@@ -61,10 +61,11 @@ class _BlackberryAppState extends State<BlackberryApp> {
             // bottom bar
             Container(
               padding: EdgeInsets.symmetric(horizontal: padding),
-              height: 100.0,
+              height: 80.0,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24.0),
+                  topRight: Radius.circular(24.0),
                 ),
                 color: _bottomBarColor,
               ),
@@ -72,9 +73,30 @@ class _BlackberryAppState extends State<BlackberryApp> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  BottomTabs(icon: Icons.home, text: "Home", isSelected: _currentIndex == 0, onPressed: (){_onPressed(0);},),
-                  BottomTabs(icon: Icons.menu, text: "Menu", isSelected: _currentIndex == 1, onPressed: (){_onPressed(1);},),
-                  BottomTabs(icon: Icons.search, text: "Search", isSelected: _currentIndex == 2, onPressed: (){_onPressed(2);},),
+                  BottomTabs(
+                    icon: Icons.home,
+                    text: "Home",
+                    isSelected: _currentIndex == 0,
+                    onPressed: () {
+                      _onPressed(0);
+                    },
+                  ),
+                  BottomTabs(
+                    icon: Icons.menu,
+                    text: "Menu",
+                    isSelected: _currentIndex == 1,
+                    onPressed: () {
+                      _onPressed(1);
+                    },
+                  ),
+                  BottomTabs(
+                    icon: Icons.search,
+                    text: "Search",
+                    isSelected: _currentIndex == 2,
+                    onPressed: () {
+                      _onPressed(2);
+                    },
+                  ),
                 ],
               ),
             ),
@@ -84,90 +106,105 @@ class _BlackberryAppState extends State<BlackberryApp> {
     );
   }
 
-  _definePages(){
+  _definePages() {
     // tabview pages
     tabViewPages = [
       // initial page
-      Padding(
-        padding: EdgeInsets.only(top: padding),
-        child: PageView.builder(
-            itemCount: 3,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index){
-              return InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondBlackberry(index)));
-                },
-                child: Container(
-                  margin: EdgeInsets.only(right: padding),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(padding *1.5),
-                    image: DecorationImage(
-                      image: AssetImage(blackberryList[index].image),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  child: Stack(
-                    children: <Widget>[
-                      // discount container
-                      Positioned(
-                        top: padding,
-                        left: padding,
+      PageView.builder(
+          itemCount: 3,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SecondBlackberry(index)));
+              },
+              child: Container(
+                child: Stack(
+                  children: <Widget>[
+                    // image
+                    Positioned.fill(
+                      child: Hero(
+                        tag: "index $index",
                         child: Container(
-                          height: 64.0,
-                          width: 64.0,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(padding *0.50),
-                            color: _backgroundColor,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Text("30%",
-                              style: TextStyle(
-                                fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.bold,
-                              ),
-                              ),
-
-                              Text("Discount",
-                                style: TextStyle(
-                                  fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                            borderRadius: BorderRadius.circular(padding * 1.5),
+                            image: DecorationImage(
+                              image: AssetImage(blackberryList[index].image),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
+                    ),
 
-                      // title, subtitle
-                      Positioned(
-                        left: padding,
-                        bottom: padding,
+                    // discount container
+                    Positioned(
+                      top: padding,
+                      left: padding,
+                      child: Container(
+                        height: 52.0,
+                        width: 52.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(padding * 0.50),
+                          color: _backgroundColor,
+                        ),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(blackberryList[index].title,
+                            Text(
+                              "30%",
                               style: TextStyle(
-                                fontSize: 32.0, color: Colors.white, fontWeight: FontWeight.bold,
+                                fontSize: 16.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-
-                            Text(blackberryList[index].subTitle,
+                            Text(
+                              "Discount",
                               style: TextStyle(
-                                height: 1.5,
-                                fontSize: 16.0, color: Colors.grey, fontWeight: FontWeight.w400,
+                                fontSize: 10.0,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+
+                    // title, subtitle
+                    Positioned(
+                      left: padding,
+                      bottom: padding,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            blackberryList[index].title,
+                            style: TextStyle(
+                              fontSize: 32.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            blackberryList[index].subTitle,
+                            style: TextStyle(
+                              height: 1.5,
+                              fontSize: 16.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            }),
-      ),
+              ),
+            );
+          }),
 
       // dont use
       Placeholder(color: Colors.amber),
@@ -185,7 +222,7 @@ class _BlackberryAppState extends State<BlackberryApp> {
             // appbar
             Container(
               padding: EdgeInsets.only(bottom: padding),
-              height: 150.0,
+              height: 130.0,
               child: Stack(
                 children: <Widget>[
                   // title text
@@ -194,8 +231,14 @@ class _BlackberryAppState extends State<BlackberryApp> {
                     bottom: 0,
                     child: Column(
                       children: <Widget>[
-                        Text("Tonight", style: TextStyle(fontSize: 40.0, color: Colors.white, fontWeight: FontWeight.bold),),
-                        Text("Monday, November 25", style: TextStyle(fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w400),),
+                        Text(
+                          "Tonight",
+                          style: TextStyle(fontSize: 40.0, color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Monday, November 25",
+                          style: TextStyle(fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w400),
+                        ),
                       ],
                     ),
                   ),
@@ -224,11 +267,14 @@ class _BlackberryAppState extends State<BlackberryApp> {
                               color: _backgroundColor,
                             ),
                             child: Center(
-                                child: Text("3",
-                                  style: TextStyle(
-                                    fontSize: 12.0, color: Colors.white, fontWeight: FontWeight.w600,
-                                  ),
+                              child: Text(
+                                "3",
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
                                 ),
+                              ),
                             ),
                           ),
 
@@ -241,16 +287,27 @@ class _BlackberryAppState extends State<BlackberryApp> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Align(alignment: Alignment.topCenter, child: Text("\$", style: TextStyle(fontSize: 10.0, color: Colors.white, fontWeight: FontWeight.w600),)),
-                              Text("32", style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),),
+                              Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Text(
+                                    "\$",
+                                    style: TextStyle(fontSize: 10.0, color: Colors.white, fontWeight: FontWeight.w600),
+                                  )),
+                              Text(
+                                "32",
+                                style: TextStyle(fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
+                              ),
                             ],
                           ),
 
                           // total price
-                          Text("Total Price",
-                          style: TextStyle(
-                            fontSize: 10.0, color: Colors.grey, fontWeight: FontWeight.w600,
-                          ),
+                          Text(
+                            "Total Price",
+                            style: TextStyle(
+                              fontSize: 10.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ],
                       ),
@@ -262,15 +319,35 @@ class _BlackberryAppState extends State<BlackberryApp> {
 
             // tabbar
             Container(
-              height: 64.0,
+              height: 40.0,
               child: Row(
                 children: <Widget>[
-                  CustomTab(text: "Promotion", isSelected: _selectedIndex == 0, onPressed: (){_onTap(0);},),
-                  CustomTab(text: "Free Drink", isSelected: _selectedIndex == 1, onPressed: (){_onTap(1);},),
-                  CustomTab(text: "Happy Hour", isSelected: _selectedIndex == 2, onPressed: (){_onTap(2);},),
+                  CustomTab(
+                    text: "Promotion",
+                    isSelected: _selectedIndex == 0,
+                    onPressed: () {
+                      _onTap(0);
+                    },
+                  ),
+                  CustomTab(
+                    text: "Free Drink",
+                    isSelected: _selectedIndex == 1,
+                    onPressed: () {
+                      _onTap(1);
+                    },
+                  ),
+                  CustomTab(
+                    text: "Happy Hour",
+                    isSelected: _selectedIndex == 2,
+                    onPressed: () {
+                      _onTap(2);
+                    },
+                  ),
                 ],
               ),
             ),
+
+            SizedBox(height: padding),
 
             // tabbarView
             Flexible(

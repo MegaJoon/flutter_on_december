@@ -18,8 +18,8 @@ class BottomTabs extends StatelessWidget {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         curve: Curves.fastOutSlowIn,
-        padding: EdgeInsets.all(16.0),
-        height: 52.0,
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        height: 48.0,
         width: isSelected? 150.0 : 100.0,
         decoration: ShapeDecoration(
           shape: StadiumBorder(),

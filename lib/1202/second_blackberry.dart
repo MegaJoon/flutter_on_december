@@ -1,9 +1,8 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_on_december/1202/blackberry_list.dart';
 
 class SecondBlackberry extends StatefulWidget {
-  int index;
+  final int index;
 
   SecondBlackberry(this.index);
 
@@ -33,7 +32,13 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
             left: 0,
             right: 0,
             bottom: screenHeight * 0.45,
-            child: Image.asset(blackberryList[widget.index].image, fit: BoxFit.fill),
+            child: Hero(
+                tag: "index ${widget.index}",
+                child: Image.asset(
+                    blackberryList[widget.index].image,
+                    fit: BoxFit.fill,
+                ),
+            ),
           ),
 
           // back button
@@ -48,12 +53,22 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(padding / 3),
                   color: _backgroundColor,
+                  boxShadow: [BoxShadow(
+                    color: Colors.black12,
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                  )],
                 ),
                 child: Center(
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 20.0,
-                    color: Colors.white,
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      size: 20.0,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -69,28 +84,34 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(padding * 2),
-                  topRight: Radius.circular(padding * 2),
+                  topLeft: Radius.circular(16.0),
+                  topRight: Radius.circular(16.0),
                 ),
                 color: _bottomBarColor,
               ),
             ),
           ),
           Positioned(
-            top: screenHeight * 0.50,
+            top: screenHeight * 0.45,
             left: 0,
             right: 0,
-            bottom: 0,
+            bottom: screenHeight * 0.15,
             child: ClipPath(
               clipper: MyClipper(),
               child: Container(
                 padding: EdgeInsets.all(padding * 1.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(padding * 2),
-                    topRight: Radius.circular(padding * 2),
+                    topLeft: Radius.circular(padding),
+                    topRight: Radius.circular(padding),
+                    bottomRight: Radius.circular(padding),
                   ),
                   color: _backgroundColor,
+                  boxShadow: [BoxShadow(
+                    color: Colors.black12,
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                  )],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +136,7 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
                       ),
                     ),
 
-                    SizedBox(height: 16.0),
+                    SizedBox(height: 24.0),
 
                     // setting
                     Row(
@@ -216,7 +237,7 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
                       ],
                     ),
 
-                    SizedBox(height: 16.0),
+                    SizedBox(height: 24.0),
 
                     // price
                     Container(
@@ -281,12 +302,11 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
           Positioned(
             left: padding * 1.5,
             right: padding * 1.5,
-            bottom: padding * 1.5,
+            bottom: padding,
             child: Container(
-              height: 150.0,
+              height: 120.0,
               child: Row(
                 children: <Widget>[
-                  //
                   Flexible(
                     fit: FlexFit.tight,
                     child: Column(
@@ -418,9 +438,9 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
                   // container
                   Container(
                     padding: EdgeInsets.symmetric(vertical: padding),
-                    width: 80.0,
+                    width: 64.0,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(padding),
+                      borderRadius: BorderRadius.circular(16.0),
                       color: _bottomTabColor,
                     ),
                     child: Column(
@@ -433,6 +453,11 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4.0),
                             color: Colors.black,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                            )],
                           ),
                           child: Stack(
                             children: <Widget>[
@@ -483,6 +508,69 @@ class _SecondBlackberryState extends State<SecondBlackberry> {
               ),
             ),
           ),
+
+          // set count
+          Positioned(
+            top: screenHeight * 0.50 - 90.0,
+            right: padding * 1.5,
+            bottom: screenHeight * 0.50 - 30.0,
+            child: Container(
+              width: 64.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.0),
+                color: _bottomTabColor,
+                boxShadow: [BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                )],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  // +
+                  Container(
+                    height: 24.0,
+                    width: 24.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _backgroundColor,
+                    ),
+                    child: Center(
+                        child: Text("+", style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),),
+                    ),
+                  ),
+
+                  // 2
+                  Container(
+                    height: 28.0,
+                    width: 28.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey,
+                    ),
+                    child: Center(
+                      child: Text("2", style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),),
+                    ),
+                  ),
+
+                  // -
+                  Container(
+                    height: 24.0,
+                    width: 24.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _backgroundColor,
+                    ),
+                    child: Center(
+                      child: Text("-", style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -494,10 +582,9 @@ class MyClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = Path()
       ..lineTo(0.0, 0.0)
-      ..lineTo(0.0, size.height * 0.65 - 20.0)
-      ..quadraticBezierTo(5.0, size.height * 0.65 - 5.0, 20.0, size.height * 0.65)
-      ..lineTo(size.width - 20.0, size.height * 0.85)
-      ..quadraticBezierTo(size.width - 5.0, size.height * 0.85 - 5.0, size.width, size.height * 0.85 - 25.0)
+      ..lineTo(0.0, size.height * 0.85 - 20.0)
+      ..quadraticBezierTo(5.0, size.height * 0.85 - 5.0, 20.0, size.height * 0.85)
+      ..lineTo(size.width, size.height)
       ..lineTo(size.width, 0.0)
       ..close();
 
