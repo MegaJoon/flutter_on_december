@@ -1,15 +1,15 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_on_december/1202/blackberry_list.dart';
 import 'package:flutter_on_december/1202/bottom_tabs.dart';
 import 'package:flutter_on_december/1202/custom_tabs.dart';
+import 'package:flutter_on_december/1202/second_blackberry.dart';
 
-class BeverageApp extends StatefulWidget {
+class BlackberryApp extends StatefulWidget {
   @override
-  _BeverageAppState createState() => _BeverageAppState();
+  _BlackberryAppState createState() => _BlackberryAppState();
 }
 
-class _BeverageAppState extends State<BeverageApp> {
+class _BlackberryAppState extends State<BlackberryApp> {
   List<Widget> pages;
   List<Widget> tabViewPages;
 
@@ -94,8 +94,77 @@ class _BeverageAppState extends State<BeverageApp> {
             itemCount: 3,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index){
-              return Container(
-                child: Placeholder(),
+              return InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondBlackberry(index)));
+                },
+                child: Container(
+                  margin: EdgeInsets.only(right: padding),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(padding *1.5),
+                    image: DecorationImage(
+                      image: AssetImage(blackberryList[index].image),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      // discount container
+                      Positioned(
+                        top: padding,
+                        left: padding,
+                        child: Container(
+                          height: 64.0,
+                          width: 64.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(padding *0.50),
+                            color: _backgroundColor,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Text("30%",
+                              style: TextStyle(
+                                fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.bold,
+                              ),
+                              ),
+
+                              Text("Discount",
+                                style: TextStyle(
+                                  fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // title, subtitle
+                      Positioned(
+                        left: padding,
+                        bottom: padding,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(blackberryList[index].title,
+                              style: TextStyle(
+                                fontSize: 32.0, color: Colors.white, fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            Text(blackberryList[index].subTitle,
+                              style: TextStyle(
+                                height: 1.5,
+                                fontSize: 16.0, color: Colors.grey, fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               );
             }),
       ),
