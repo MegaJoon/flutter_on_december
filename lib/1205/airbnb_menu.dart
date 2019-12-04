@@ -12,8 +12,6 @@ class _AirbnbMenuAppState extends State<AirbnbMenuApp> {
 
   bool isSelected = false;
 
-  Timer _timer;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
