@@ -81,7 +81,7 @@ class _AmericanExpressState extends State<AmericanExpress> with SingleTickerProv
 
   PageController _pageController;
 
-  int _currentIndex = 0;
+  int _currentIndex = 0;  // index
 
   // scroll
   @override
