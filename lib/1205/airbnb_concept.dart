@@ -49,7 +49,7 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
                   // appbar
                   Container(
                     padding: EdgeInsets.only(right: MediaQuery.of(context).size.width /2),
-                    height: 64.0,
+                    height: 48.0,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -69,9 +69,9 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
 
                   // tabs
                   Container(
-                    height: 64.0,
+                    height: 40.0,
                     child: ListView(
-                      padding: EdgeInsets.only(top : 24.0),
+                      padding: EdgeInsets.only(top : padding),
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
@@ -241,8 +241,8 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
 
                   // bottombar
                   Container(
-                    margin: EdgeInsets.only(top: padding),
-                    height: 100.0,
+                    margin: EdgeInsets.only(top: padding /2),
+                    height: 80.0,
                     child: Stack(
                       children: <Widget>[
                         // container
@@ -254,7 +254,7 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
                             clipper: BottomClipper(),
                             child: Container(
                               padding: EdgeInsets.symmetric(horizontal: padding),
-                              height: 80.0,
+                              height: 64.0,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(24.0),
@@ -266,19 +266,13 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
                                 children: <Widget>[
                                   Flexible(
                                     child: Center(
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(Icons.home, size: 40.0, color: _color),
-                                      ),
+                                      child: Icon(Icons.home, size: 40.0, color: _color),
                                     ),
                                   ),
 
                                   Flexible(
                                     child: Center(
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(FontAwesomeIcons.newspaper, size: 40.0, color: Colors.grey),
-                                      ),
+                                      child: Icon(FontAwesomeIcons.newspaper, size: 40.0, color: Colors.grey),
                                     ),
                                   ),
 
@@ -288,19 +282,13 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
 
                                   Flexible(
                                     child: Center(
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(Icons.settings, size: 40.0, color: Colors.grey),
-                                      ),
+                                      child: Icon(Icons.settings, size: 40.0, color: Colors.grey),
                                     ),
                                   ),
 
                                   Flexible(
                                     child: Center(
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(Icons.person_outline, size: 40.0, color: Colors.grey),
-                                      ),
+                                      child: Icon(Icons.person_outline, size: 40.0, color: Colors.grey),
                                     ),
                                   ),
                                 ],
@@ -312,20 +300,20 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
                         // floating btn
                         Positioned(
                           top: 0,
-                          left: MediaQuery.of(context).size.width / 2 - 40.0,
-                          right: MediaQuery.of(context).size.width / 2 - 40.0,
+                          left: MediaQuery.of(context).size.width / 2 - 38.0,
+                          right: MediaQuery.of(context).size.width / 2 - 38.0,
                           child: ClipPath(
                             clipper: MyClipper(),
                             child: Container(
                               alignment: Alignment.center,
-                              height: 72.0,
+                              height: 64.0,
                               decoration: BoxDecoration(
                                   color: _color,
                                   boxShadow: [BoxShadow(
                                       color: Colors.black12, spreadRadius: 1, blurRadius: 1)]),
                               child: Transform.rotate(
                                 angle: -3.1,
-                                child: Icon(FontAwesomeIcons.airbnb, size: 52.0, color: Colors.white),
+                                child: Icon(FontAwesomeIcons.airbnb, size: 44.0, color: Colors.white),
                               ),
                             ),
                           ),
@@ -342,7 +330,7 @@ class _AirbnbConceptState extends State<AirbnbConcept> {
               top: 0,
               right: 0,
               child: Container(
-                height: 64.0,
+                height: 48.0,
                 width: MediaQuery.of(context).size.width /2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(24.0)),
@@ -422,7 +410,7 @@ class BottomClipper extends CustomClipper<Path> {
       ..lineTo(size.width / 2 + 48.0, 0.0)
       ..quadraticBezierTo(size.width / 2 + 36.0, 3.0, size.width / 2 + 32.0, 12.0)
       ..lineTo(size.width / 2 + 20.0, size.height * 0.45)
-      ..quadraticBezierTo(size.width / 2, size.height * 0.87, size.width / 2 - 20.0, size.height * 0.45)
+      ..quadraticBezierTo(size.width / 2, size.height * 0.98, size.width / 2 - 20.0, size.height * 0.45)
       ..lineTo(size.width / 2 - 32.0, 12.0)
       ..quadraticBezierTo(size.width / 2 - 36.0, 3.0, size.width / 2 - 48.0, 0.0)
       ..lineTo(0.0, 0.0)
