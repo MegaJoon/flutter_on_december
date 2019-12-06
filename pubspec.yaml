@@ -28,6 +28,16 @@ flutter:
     - assets/1204/american_express.jfif
     - assets/1204/american_express_back_side.jpg
     - assets/1204/great_success_animation.gif
+    - assets/1206/backgroundImage.jpg
+    - assets/1206/image.jpg
+    - assets/1206/backgroundImage1.jpg
+    - assets/1206/image1.jpeg
+    - assets/1206/backgroundImage2.gif
+    - assets/1206/image2.jpg
+    - assets/1206/backgroundImage3.jpg
+    - assets/1206/image3.jpg
+    - assets/1206/backgroundImage4.jfif
+    - assets/1206/image4.webp
 
   fonts:
     - family: San Marino Beach
