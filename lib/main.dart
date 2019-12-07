@@ -5,6 +5,7 @@ import 'package:flutter_on_december/1204/american_express.dart';
 import 'package:flutter_on_december/1205/airbnb_app.dart';
 import 'package:flutter_on_december/1205/airbnb_concept.dart';
 import 'package:flutter_on_december/1206/galactic_bnb.dart';
+import 'package:flutter_on_december/1207/banking/banking_app.dart';
 import 'package:flutter_on_december/1207/clone_galactic_bnb.dart';
 import 'package:flutter_on_december/1207/courses_ui.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
 //      home: AirbnbApp(),  // 12-05
 //      home: GalacticBnb(),  // 12-06
 //      home: CloneGalacticBnb(),  // 12-07
-      home: CoursesUI(),  // 12-07
+//      home: CoursesUI(),  // 12-07
+      home: BankingApp(),  // 12-07
     );
   }
 }
