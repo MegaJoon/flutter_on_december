@@ -16,7 +16,7 @@ class _BankingAppState extends State<BankingApp> {
 
   double padding = 16.0; // padding
 
-  int _currentIndex = 3; // bottom index
+  int _currentIndex = 2; // bottom index
 
   // bottom index Function
   void _onPressed(int num) {
@@ -116,7 +116,7 @@ class _BankingAppState extends State<BankingApp> {
             // appbar
             Container(
               padding: EdgeInsets.only(right: padding),
-              margin: EdgeInsets.only(bottom: padding *2),
+              margin: EdgeInsets.only(bottom: padding),
               height: 52.0,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -197,7 +197,6 @@ class _BankingAppState extends State<BankingApp> {
                     // pie chart
                     Positioned.fill(
                         child: Container(
-                          height: 200.0,
                           width: 200.0,
                           child: CustomPaint(
                             painter: MyPaint(),
@@ -208,9 +207,9 @@ class _BankingAppState extends State<BankingApp> {
                     // food 30%
                     Positioned(
                       left: 0,
-                      bottom: padding *7,
+                      bottom: padding *2.5,
                       child: Container(
-                        height: 52.0,
+                        height: 44.0,
                         width: 130.0,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
@@ -235,7 +234,6 @@ class _BankingAppState extends State<BankingApp> {
                           ],
                         ),
                       ),
-
                     ),
                   ],
                 ),
@@ -244,7 +242,7 @@ class _BankingAppState extends State<BankingApp> {
 
             // shopw my transactions container
             Container(
-              margin: EdgeInsets.only(top: padding, right: padding, bottom: padding *2),
+              margin: EdgeInsets.only(top: padding, right: padding, bottom: padding),
               height: 44.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
@@ -304,7 +302,7 @@ class MyPaint extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // basic circle
-    Rect rect = Rect.fromLTWH(boxWidth /2 - 16.0, boxHeight /2, boxWidth, boxHeight);
+    Rect rect = Rect.fromLTWH(boxWidth /2 - 16.0, boxHeight /3.5, boxWidth, boxHeight);
 
     canvas.drawArc(
         rect,
@@ -318,11 +316,11 @@ class MyPaint extends CustomPainter {
 
     // a part of circle
     for (double i = 0.0; i < 360.0; i += (360.0 / 5)) {
-      Offset center = Offset(boxWidth - 16.0, boxHeight);
+      Offset center = Offset(boxWidth - 16.0, boxHeight / 1.3);
       double radius = boxWidth / 2;
 
       double startAngle = i;
-      double endAngle = -70.0;
+      double endAngle = -80.0;
 
 //      print("$cnt번째 원 ^^^^^^^^^ i = $i, cnt = $cnt, startAngle = $startAngle, endAngle = $endAngle");
 
@@ -331,7 +329,7 @@ class MyPaint extends CustomPainter {
         ..strokeWidth = strokeWidth * 0.50
         ..style = PaintingStyle.stroke
         ..isAntiAlias = true
-        ..color = _colorList[cnt];
+        ..color = _colorList[cnt].withOpacity(0.95);
 
       // start to draw
       drawArcWithRadius(canvas, center, radius, startAngle, endAngle, paint);
