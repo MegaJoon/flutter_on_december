@@ -141,7 +141,7 @@ class _CloneGalacticBnbState extends State<CloneGalacticBnb> {
                                         // top
                                         Flexible(
                                           child: Container(
-                                            margin: EdgeInsets.all(1.0),
+                                            margin: EdgeInsets.only(top: 1.0, left: 1.0, right: 1.0),
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
                                                 image: AssetImage(
