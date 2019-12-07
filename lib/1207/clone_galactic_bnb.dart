@@ -217,8 +217,51 @@ class _CloneGalacticBnbState extends State<CloneGalacticBnb> {
                     // bottom indicator
                     Container(
                       height: 64.0,
-                      color: Colors.teal,
-                      child: Placeholder(),
+//                      color: Colors.teal,
+                      child: Center(
+                        child: Container(
+                          height: 24.0,
+                          width: 72.0,
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(right: padding /2),
+                                width: 8.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.red, width: 1.5),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: padding /2),
+                                width: 8.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.orange, width: 1.5),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: padding /2),
+                                width: 8.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.yellowAccent, width: 1.5),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: padding /2),
+                                width: 8.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.orange, width: 1.5),
+                                ),
+                              ),
+                              Container(
+                                width: 8.0,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.red, width: 1.5),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
