@@ -19,6 +19,8 @@ class _TodoAppState extends State<TodoApp> {
   String name = "Dr. Peterson";
   String title = "Next appointments";
 
+  String _image = "https://cdn.pixabay.com/photo/2019/12/04/13/12/hair-4672683__340.jpg";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +174,7 @@ class _TodoAppState extends State<TodoApp> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(radius / 1.5),
                                     image: DecorationImage(
-                                      image: NetworkImage("https://cdn.pixabay.com/photo/2019/12/04/13/12/hair-4672683__340.jpg"),
+                                      image: NetworkImage(_image),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
