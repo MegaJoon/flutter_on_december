@@ -43,6 +43,9 @@ flutter:
     - family: San Marino Beach
       fonts:
         - asset: fonts/San Marino Beach.otf
+    - family: Kitten Bold 400
+      fonts:
+        - asset: fonts/Kitten Bold 400.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

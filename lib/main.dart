@@ -8,6 +8,7 @@ import 'package:flutter_on_december/1206/galactic_bnb.dart';
 import 'package:flutter_on_december/1207/banking/banking_app.dart';
 import 'package:flutter_on_december/1207/clone_galactic_bnb.dart';
 import 'package:flutter_on_december/1207/courses_ui.dart';
+import 'package:flutter_on_december/1208/todo_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
 //      home: GalacticBnb(),  // 12-06
 //      home: CloneGalacticBnb(),  // 12-07
 //      home: CoursesUI(),  // 12-07
-      home: BankingApp(),  // 12-07
+//      home: BankingApp(),  // 12-07
+      home: TodoApp(),  // 12-08
     );
   }
 }
