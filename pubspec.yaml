@@ -38,6 +38,16 @@ flutter:
     - assets/1206/image3.jpg
     - assets/1206/backgroundImage4.jfif
     - assets/1206/image4.webp
+    - assets/1209/movie00.jpg
+    - assets/1209/movie01.jpg
+    - assets/1209/movie02.jpeg
+    - assets/1209/movie03.jfif
+    - assets/1209/movie10.jpg
+    - assets/1209/movie11.jpg
+    - assets/1209/movie12.jpg
+    - assets/1209/movie13.jfif
+    - assets/1209/movie20.jpg
+    - assets/1209/movie30.jpg
 
   fonts:
     - family: San Marino Beach
