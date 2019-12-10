@@ -10,6 +10,7 @@ import 'package:flutter_on_december/1207/clone_galactic_bnb.dart';
 import 'package:flutter_on_december/1207/courses_ui.dart';
 import 'package:flutter_on_december/1208/todo_app.dart';
 import 'package:flutter_on_december/1209/movie_app.dart';
+import 'package:flutter_on_december/1210/play_modules_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
 //      home: CoursesUI(),  // 12-07
 //      home: BankingApp(),  // 12-07
 //      home: TodoApp(),  // 12-08
-      home: MovieApp(),  // 12-09
+//      home: MovieApp(),  // 12-09
+      home: PlayModulesApp(),  // 12-10
     );
   }
 }
