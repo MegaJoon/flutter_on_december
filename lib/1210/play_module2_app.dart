@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_on_december/1210/module_list.dart';
 import 'package:flutter_on_december/1210/product_tabs.dart';
 
 // https://www.instagram.com/p/B5zNoh9gtYT/?igshid=1e49fvhgqv7jp
@@ -30,6 +32,17 @@ class _PlayModules2AppState extends State<PlayModules2App> {
     setState(() {
       _currentIndex = num;
     });
+  }
+
+  // pageview
+  PageController _pageController;
+
+  int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: _selectedIndex, viewportFraction: 0.70);
+    super.initState();
   }
 
   @override
@@ -182,7 +195,7 @@ class _PlayModules2AppState extends State<PlayModules2App> {
 
             // add to cart | buy now btn
             Container(
-              margin: EdgeInsets.only(top: padding, right: padding),
+              margin: EdgeInsets.only(top: padding *2, right: padding),
               height: 40.0,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -251,10 +264,230 @@ class _PlayModules2AppState extends State<PlayModules2App> {
     pages = [
       // initial page
 //      Placeholder(color: Colors.red),
-      PageView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 3,
-          itemBuilder: null),
+      PageView(
+        scrollDirection: Axis.horizontal,
+        controller: _pageController,
+        onPageChanged: (int selectedIndex){
+          setState(() {
+            _selectedIndex = selectedIndex;
+          });
+        },
+        children: <Widget>[
+          // first page
+          Container(
+            margin: EdgeInsets.only(right: padding *2, bottom: 4.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(padding /2),
+              color: Colors.grey[200],
+              boxShadow: [BoxShadow(
+                color: Colors.black12,
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: Offset(2.0, 2.0),
+              )],
+            ),
+
+            child: Stack(
+              children: <Widget>[
+                // text : Hydra
+                Positioned(
+                  top: padding,
+                  left: padding,
+                  child: Text("Hydra",
+                    style: TextStyle(
+                      fontSize: 64.0, color: Colors.grey[300], fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                // text : new & icon
+                Positioned(
+                  top: padding,
+                  left: padding,
+                  right: padding,
+                  child: Container(
+                    height: 24.0,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        // text : new
+                        Text("New",
+                          style: TextStyle(
+                            fontSize: 12.0, color: Colors.black, fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        Spacer(),
+
+                        Icon(Icons.play_circle_filled, size: 20.0, color: Colors.white),
+                      ],
+                    ),
+                  ),
+
+                ),
+
+                // image
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 80.0,
+                  child: Image.asset(
+                      "assets/1210/module.png",
+                      fit: BoxFit.fill,
+                  ),
+                ),
+
+                // bottom
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(padding),
+                    height: 150.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(padding /2),
+                        bottomRight: Radius.circular(padding /2),
+                      ),
+                      color: _containerColor
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        // title
+                        Text("Play 350 EX",
+                          style: TextStyle(
+                            fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        // subtitle
+                        Text("A fully asncklasncklnal that ank\nkdnclkanckdanklckld\nckdnlckdnkd.",
+                          style: TextStyle(
+                            fontSize: 10.0, color: Colors.grey[400], fontWeight: FontWeight.w300,
+                          ),
+                        ),
+
+                        // icon
+                        Row(
+                          children: <Widget>[
+                            // favorite icon
+                            Icon(Icons.favorite_border, size: 16.0, color: Colors.grey[400]),
+
+                            Spacer(),
+
+                            // text : view more
+                            Text("View More",
+                              style: TextStyle(
+                                fontSize: 10.0, color: Colors.grey[400], fontWeight: FontWeight.w300,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // price & circle colors
+                        Row(
+                          children: <Widget>[
+                            // price
+                            Text("\$150.00",
+                              style: TextStyle(
+                                fontSize: 14.0, color: _color, fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            Spacer(),
+
+                            // 2 colors
+                            Container(
+                              margin: EdgeInsets.only(right: padding /2),
+                              height: 8.0,
+                              width: 8.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.amber,
+                              ),
+                            ),
+
+                            Container(
+//                              margin: EdgeInsets.only(right: padding /2),
+                              height: 8.0,
+                              width: 8.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.lightBlueAccent,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // second page
+          Container(
+            margin: EdgeInsets.only(top: padding *2, right: padding *2, bottom: 4.0 + padding *2),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(padding /2),
+              color: _containerColor,
+              boxShadow: [BoxShadow(
+                color: Colors.black12,
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: Offset(2.0, 2.0),
+              )],
+            ),
+
+            child: Stack(
+              children: <Widget>[
+                // image
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 80.0,
+                  child: Image.asset(
+                    "assets/1210/module1.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+
+                // bottom
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(padding),
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(padding /2),
+                          bottomRight: Radius.circular(padding /2),
+                        ),
+                        color: _containerColor
+                    ),
+                    child: Placeholder(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+
+          // XXXXXXXXXXXXXXXXXXX
+          Container(
+            child: Placeholder(),
+          ),
+        ],
+      ),
 
       // dont use
       Placeholder(color: Colors.amber),
