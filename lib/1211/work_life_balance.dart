@@ -239,6 +239,85 @@ class _WorkLifeBalanceState extends State<WorkLifeBalance> {
                 ],
               ),
             ),
+
+            // list: bottom container
+            Flexible(
+              fit: FlexFit.tight,
+              child: ListView.builder(
+                  padding: EdgeInsets.only(top: padding, bottom: padding),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: 4,
+                  itemBuilder: (context, index){
+                    return Container(
+                      margin: EdgeInsets.only(bottom: padding),
+                      height: 64.0,
+                      child: Stack(
+                        children: <Widget>[
+                          // white container
+                          Positioned(
+                            top: 0,
+                            left: padding,
+                            bottom: 0,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(radius /3),
+                                color: Colors.white,
+                              ),
+
+                              child: Row(
+                                children: <Widget>[
+                                  // check box
+                                  Container(
+                                    margin: EdgeInsets.only(right: padding),
+                                    width: 40.0,
+                                    child: Placeholder(),
+                                  ),
+
+                                  // text
+                                  Flexible(
+                                    fit: FlexFit.tight,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        Container(
+                                          padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
+                                          decoration: ShapeDecoration(
+                                            shape: StadiumBorder(),
+                                            color: Colors.lightBlue.withOpacity(0.20),
+                                          ),
+
+                                          child: Text(taskList[index].title,
+                                            style: TextStyle(
+                                              fontSize: 10.0, color: Colors.lightBlue, fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+
+                                        Text(taskList[index].subTitle,
+                                          style: TextStyle(
+                                            fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  // image
+                                  Image.asset("assets/1211/image.PNG", fit: BoxFit.contain, width: 80.0),
+
+                                  SizedBox(width: padding),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
           ],
         ),
       ),
@@ -276,12 +355,12 @@ class _WorkLifeBalanceState extends State<WorkLifeBalance> {
         backgroundColor: Colors.black,
         child: Icon(Icons.add, size: 40.0, color: Colors.white),
       ),
-
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
 
+// chart custompaint
 class ChartPaint extends CustomPainter {
   double radius = 20.0;
 
@@ -315,9 +394,21 @@ class ChartPaint extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
+// item list
+class TaskList {
+  String title;
+  String subTitle;
+  bool isSelected;
 
+  TaskList({this.title, this.subTitle, this.isSelected});
+}
 
-
+List<TaskList> taskList = [
+  TaskList(title: "Work", subTitle: "Create wireframes", isSelected: false),
+  TaskList(title: "Family & Friends", subTitle: "Dinner with parents", isSelected: false),
+  TaskList(title: "Work", subTitle: "Project research", isSelected: false),
+  TaskList(title: "Helth & Activity", subTitle: "Latino dance class", isSelected: false),
+];
 
 
 
