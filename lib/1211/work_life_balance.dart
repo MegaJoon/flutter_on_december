@@ -16,10 +16,52 @@ class _WorkLifeBalanceState extends State<WorkLifeBalance> {
   // double
   double padding = 16.0;
   double radius = 24.0;
+  double slideWidth = 100.0;
 
   // profile image
   String _image = "https://cdn.pixabay.com/photo/2019/02/20/10/04/penguin-4008872_960_720.jpg";
   String _backgroundImage = "https://cdn.pixabay.com/photo/2019/12/07/14/55/labrador-4679457_960_720.png";
+
+  // select color list
+  _colorList(String text, double opacity){
+    switch (text) {
+      case "Work":
+        return Colors.lightBlue.withOpacity(opacity);
+        break;
+
+      case "Family & Friends":
+        return Colors.deepOrangeAccent.withOpacity(opacity);
+        break;
+
+      case "Health & Activity":
+        return Colors.lightGreen.withOpacity(opacity);
+        break;
+    }
+  }
+
+  // select image list
+  _imageList(String text){
+    switch (text) {
+      case "Work":
+        return "assets/1211/image.PNG";
+        break;
+
+      case "Family & Friends":
+        return "assets/1211/image1.PNG";
+        break;
+
+      case "Health & Activity":
+        return "assets/1211/image2.PNG";
+        break;
+    }
+  }
+
+  // list remove at Function
+  void _removeAtList(int num){
+    setState(() {
+      taskList.removeAt(num);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -247,32 +289,84 @@ class _WorkLifeBalanceState extends State<WorkLifeBalance> {
                   padding: EdgeInsets.only(top: padding, bottom: padding),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  itemCount: 4,
+                  itemCount: taskList.length,
                   itemBuilder: (context, index){
                     return Container(
                       margin: EdgeInsets.only(bottom: padding),
                       height: 64.0,
                       child: Stack(
                         children: <Widget>[
-                          // white container
+                          // background green color
                           Positioned(
                             top: 0,
-                            left: padding,
+                            left: 0,
+                            bottom: 0,
+                            child: GestureDetector(
+                              onTap: (){
+                                print("on clicked : Done!");
+
+                                //
+                                _removeAtList(index);
+                              },
+                              child: Container(
+                                width: taskList[index].isSelected? slideWidth + 6.0 : 0.0,
+                                color: Color.fromRGBO(166, 194, 167, 1),
+                                child: Center(
+                                    child: Text("Done!",
+                                      style: TextStyle(
+                                        fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          
+                          // white container
+                          AnimatedPositioned(
+                            duration: Duration(milliseconds: 200),
+                            curve: Curves.bounceInOut,
+                            top: 0,
+                            left: taskList[index].isSelected? slideWidth : padding,
                             bottom: 0,
                             child: Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(radius /3),
+                                borderRadius: BorderRadius.circular(radius /2),
                                 color: Colors.white,
+                                boxShadow: taskList[index].isSelected? [BoxShadow(
+                                  color: Colors.black12,
+                                  spreadRadius: 4,
+                                  blurRadius: 4,
+                                )] : null,
                               ),
 
                               child: Row(
                                 children: <Widget>[
                                   // check box
-                                  Container(
-                                    margin: EdgeInsets.only(right: padding),
-                                    width: 40.0,
-                                    child: Placeholder(),
+                                  GestureDetector(
+                                    onTap: (){
+                                      setState(() {
+                                        taskList[index].isSelected = !taskList[index].isSelected;
+                                      });
+                                    },
+                                    child: AnimatedContainer(
+                                      duration: Duration(milliseconds: 200),
+                                      curve: Curves.bounceInOut,
+                                      margin: EdgeInsets.only(right: padding),
+                                      height: 24.0,
+                                      width: 40.0,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: taskList[index].isSelected? Colors.black : Colors.white,
+                                        border: taskList[index].isSelected? null : Border.all(
+                                          color: Colors.grey, width: 1.5,
+                                        ),
+                                      ),
+                                      child: taskList[index].isSelected? Center(
+                                        child: Icon(Icons.check, size: 16.0, color: Colors.white),
+                                      ) : Container(),
+                                    ),
                                   ),
 
                                   // text
@@ -286,12 +380,12 @@ class _WorkLifeBalanceState extends State<WorkLifeBalance> {
                                           padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
                                           decoration: ShapeDecoration(
                                             shape: StadiumBorder(),
-                                            color: Colors.lightBlue.withOpacity(0.20),
+                                            color: _colorList(taskList[index].title, 0.20),
                                           ),
 
                                           child: Text(taskList[index].title,
                                             style: TextStyle(
-                                              fontSize: 10.0, color: Colors.lightBlue, fontWeight: FontWeight.bold,
+                                              fontSize: 10.0, color: _colorList(taskList[index].title, 1.0), fontWeight: FontWeight.bold,
                                             ),
                                           ),
                                         ),
@@ -306,8 +400,7 @@ class _WorkLifeBalanceState extends State<WorkLifeBalance> {
                                   ),
 
                                   // image
-                                  Image.asset("assets/1211/image.PNG", fit: BoxFit.contain, width: 80.0),
-
+                                  Image.asset(_imageList(taskList[index].title), fit: BoxFit.contain, width: 80.0),
                                   SizedBox(width: padding),
                                 ],
                               ),
@@ -407,7 +500,7 @@ List<TaskList> taskList = [
   TaskList(title: "Work", subTitle: "Create wireframes", isSelected: false),
   TaskList(title: "Family & Friends", subTitle: "Dinner with parents", isSelected: false),
   TaskList(title: "Work", subTitle: "Project research", isSelected: false),
-  TaskList(title: "Helth & Activity", subTitle: "Latino dance class", isSelected: false),
+  TaskList(title: "Health & Activity", subTitle: "Latino dance class", isSelected: false),
 ];
 
 
