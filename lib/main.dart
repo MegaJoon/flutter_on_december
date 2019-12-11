@@ -12,6 +12,7 @@ import 'package:flutter_on_december/1208/todo_app.dart';
 import 'package:flutter_on_december/1209/movie_app.dart';
 import 'package:flutter_on_december/1210/play_module2_app.dart';
 import 'package:flutter_on_december/1210/play_modules_app.dart';
+import 'package:flutter_on_december/1211/work_life_balance.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
 //      home: TodoApp(),  // 12-08
 //      home: MovieApp(),  // 12-09
 //      home: PlayModulesApp(),  // 12-10
-      home: PlayModules2App(),  // 12-10
+//      home: PlayModules2App(),  // 12-10
+      home: WorkLifeBalance(),  // 12-11
     );
   }
 }
