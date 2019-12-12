@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_on_december/1212/character_list.dart';
 
 // https://www.pinterest.co.kr/pin/379076493634664421/
 
@@ -96,15 +97,51 @@ class _MovieCharachterUIState extends State<MovieCharachterUI> {
                                 child: ClipPath(
                                   clipper: MyClipper(),
                                   child: Container(
+                                    padding: EdgeInsets.all(padding),
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
-                                        colors: [Colors.red, Colors.red.withOpacity(0.80)],
+                                        colors: [characterList[index].color,
+                                          characterList[index].color.withOpacity(0.80),
+                                        ],
                                         begin: Alignment.centerLeft,
                                         end: Alignment.centerRight,
                                       ),
                                     ),
+
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        // text : title
+                                        Text(characterList[index].title,
+                                          style: TextStyle(
+                                            fontSize: 44.0, color: Colors.white, fontWeight: FontWeight.bold,
+                                            height: 2.5,
+                                          ),
+                                        ),
+
+                                        // text : click to read more
+                                        Text("Click to Read more",
+                                          style: TextStyle(
+                                            fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
+                            ),
+
+                            // character image
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 100.0,
+                              child: Image.asset(
+                                  characterList[index].image,
+                                  fit: BoxFit.fill,
+                              ),
                             ),
                           ],
                         ),
