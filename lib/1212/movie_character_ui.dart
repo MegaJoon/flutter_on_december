@@ -95,21 +95,47 @@ class _MovieCharachterUIState extends State<MovieCharachterUI> {
                           children: <Widget>[
                             // background color
                             Positioned.fill(
-                                child: Hero(
-                                  tag: "color container $index",
-                                  child: ClipPath(
-                                    clipper: MyClipper(),
-                                    child: Container(
-                                      padding: EdgeInsets.all(padding),
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [characterList[index].color,
-                                            characterList[index].color.withOpacity(0.80),
-                                          ],
-                                          begin: Alignment.centerLeft,
-                                          end: Alignment.centerRight,
-                                        ),
+                                child: ClipPath(
+                                  clipper: MyClipper(),
+                                  child: Container(
+                                    padding: EdgeInsets.all(padding),
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [characterList[index].color,
+                                          characterList[index].color.withOpacity(0.80),
+                                        ],
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
                                       ),
+                                    ),
+
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        // text : title
+                                        Text(characterList[index].title,
+                                          style: TextStyle(
+                                            fontSize: 44.0, color: Colors.white, fontWeight: FontWeight.bold,
+                                            height: 2.5,
+                                          ),
+                                        ),
+
+                                        // text : click to read more
+                                        InkWell(
+                                          onTap: (){
+                                            print("on clicked : move next page");
+
+                                            // move next page
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => SecondMoviePage(index)));
+                                          },
+                                          child: Text("Click to Read more",
+                                            style: TextStyle(
+                                              fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -121,48 +147,9 @@ class _MovieCharachterUIState extends State<MovieCharachterUI> {
                               left: 0,
                               right: 0,
                               bottom: 100.0,
-                              child: Hero(
-                                tag: "image $index",
-                                child: Image.asset(
-                                    characterList[index].image,
-                                    fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-
-                            // text in contianer
-                            Positioned(
-                              left: padding,
-                              right: 0,
-                              bottom: padding,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  // text : title
-                                  Text(characterList[index].title,
-                                    style: TextStyle(
-                                      fontSize: 44.0, color: Colors.white, fontWeight: FontWeight.bold,
-                                      height: 2.5,
-                                    ),
-                                  ),
-
-                                  // text : click to read more
-                                  InkWell(
-                                    onTap: (){
-                                      print("on clicked : this page in Pageview");
-
-                                      // move next page
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => SecondMoviePage(index)));
-                                    },
-
-                                    child: Text("Click to Read more",
-                                      style: TextStyle(
-                                        fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  )
-                                ],
+                              child: Image.asset(
+                                  characterList[index].image,
+                                  fit: BoxFit.fill,
                               ),
                             ),
                           ],
