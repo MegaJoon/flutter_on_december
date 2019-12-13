@@ -17,15 +17,8 @@ class _SecondMoviePageState extends State<SecondMoviePage> {
   double radius = 24.0;
   double padding = 16.0;
 
-  double positionY = 600.0;
-  double positionY1 = 0.0;
-  double positionY2 = 0.0;
-
   @override
   Widget build(BuildContext context) {
-    // screen height
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: SafeArea(
         top: true,
@@ -35,15 +28,18 @@ class _SecondMoviePageState extends State<SecondMoviePage> {
           children: <Widget>[
             // background color container
             Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        characterList[widget.index].color,
-                        characterList[widget.index].color.withOpacity(0.80),
-                      ],
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
+                child: Hero(
+                  tag: "color ${widget.index}",
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          characterList[widget.index].color,
+                          characterList[widget.index].color.withOpacity(0.80),
+                        ],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
                     ),
                   ),
                 ),
@@ -79,57 +75,50 @@ class _SecondMoviePageState extends State<SecondMoviePage> {
               ),
             ),
 
-            // bottom sheet
+            // image
             Positioned(
-              top: positionY,
-              left: 0,
+              top: 0,
+              left: 100.0,
               right: 0,
-              child: GestureDetector(
-                onTap: (){
-                  setState(() {
-                    positionY = 600.0;
-                  });
-                },
-
-                onVerticalDragStart: (DragStartDetails dragStartDetails){},
-
-                onVerticalDragUpdate: (DragUpdateDetails dragUpdateDetails){
-                  setState(() {
-                    positionY += dragUpdateDetails.delta.dy;
-//                    print("positionY = $positionY");
-
-                    // minimum == 600.0
-                    if(positionY > 600.0) positionY = 600.0;
-
-                    // half == 470.0
-
-                    // full == 320.0
-                    if(positionY < 320.0) positionY = 320.0;
-                  });
-                },
-                onVerticalDragEnd: (DragEndDetails dragEndDetails){
-                  setState(() {
-                    if (positionY < (470.0 - 320.0) /2 + 320.0) positionY = 320.0;
-                    else positionY = 470.0;
-                  });
-                },
+              child: Hero(
+                tag: "image ${widget.index}",
                 child: Container(
-                  height: screenHeight * 0.50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(radius),
-                      topRight: Radius.circular(radius),
-                    ),
-                    color: Colors.white,
-                    boxShadow: [BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 4,
-                      blurRadius: 4,
-                    )],
-                  ),
-                  child: Placeholder(),
+                  height: MediaQuery.of(context).size.height * 0.50,
+                  child: Image.asset(characterList[widget.index].image, fit: BoxFit.contain),
                 ),
               ),
+            ),
+
+            // column text
+            Positioned(
+              top: 300.0,
+              left: padding,
+              right: padding *3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // text : title
+                  Text(characterList[widget.index].title,
+                    style: TextStyle(
+                      fontSize: 40.0, color: Colors.white, fontWeight: FontWeight.bold,
+                      height: 2.0
+                    ),
+                  ),
+
+                  // text : description
+                  Text(characterList[widget.index].description,
+                    style: TextStyle(
+                      fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w400,
+                      height: 1.5
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // bottom sheet
+            Positioned(
+              
             ),
           ],
         ),
