@@ -14,6 +14,7 @@ import 'package:flutter_on_december/1210/play_module2_app.dart';
 import 'package:flutter_on_december/1210/play_modules_app.dart';
 import 'package:flutter_on_december/1211/work_life_balance.dart';
 import 'package:flutter_on_december/1212/movie_character_ui.dart';
+import 'package:flutter_on_december/1214/shoes_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
 //      home: PlayModulesApp(),  // 12-10
 //      home: PlayModules2App(),  // 12-10
 //      home: WorkLifeBalance(),  // 12-11
-      home: MovieCharachterUI(),  // 12-12
+//      home: MovieCharachterUI(),  // 12-12
+      home: ShoesApp(),  // 12-14
     );
   }
 }
