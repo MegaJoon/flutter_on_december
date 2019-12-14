@@ -69,12 +69,14 @@ class _ShoesAppState extends State<ShoesApp> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.amber,
-                        boxShadow: [BoxShadow(
-                          color: Colors.black12,
-                          spreadRadius: 1.0,
-                          blurRadius: 1.0,
-                          offset: Offset(1.0, 1.0),
-                        )],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 1.0,
+                            blurRadius: 1.0,
+                            offset: Offset(1.0, 1.0),
+                          )
+                        ],
                       ),
                     ),
                     Container(
@@ -84,12 +86,14 @@ class _ShoesAppState extends State<ShoesApp> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black,
-                        boxShadow: [BoxShadow(
-                          color: Colors.black12,
-                          spreadRadius: 1.0,
-                          blurRadius: 1.0,
-                          offset: Offset(1.0, 1.0),
-                        )],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 1.0,
+                            blurRadius: 1.0,
+                            offset: Offset(1.0, 1.0),
+                          )
+                        ],
                       ),
                     ),
 
@@ -99,14 +103,16 @@ class _ShoesAppState extends State<ShoesApp> {
                     Container(
                       width: 48.0,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(radius /2),
+                        borderRadius: BorderRadius.circular(radius / 2),
                         color: Colors.white,
-                        boxShadow: [BoxShadow(
-                          color: Colors.black12,
-                          spreadRadius: 1.0,
-                          blurRadius: 1.0,
-                          offset: Offset(1.0, 1.0),
-                        )],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 1.0,
+                            blurRadius: 1.0,
+                            offset: Offset(1.0, 1.0),
+                          )
+                        ],
                       ),
 //                      child: Placeholder(),
                       child: Center(
@@ -116,13 +122,17 @@ class _ShoesAppState extends State<ShoesApp> {
                             TextSpan(
                               text: "24\n",
                               style: TextStyle(
-                                fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             TextSpan(
                               text: "hours",
                               style: TextStyle(
-                                fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w600,
+                                fontSize: 12.0,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ]),
@@ -133,7 +143,60 @@ class _ShoesAppState extends State<ShoesApp> {
                 ),
               ),
 
+              // main box
+              Flexible(
+                fit: FlexFit.tight,
+                child: Placeholder(),
+              ),
 
+              // price container
+              Container(
+                height: 64.0,
+                child: Row(
+                  children: <Widget>[
+                    // text : price
+                    RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                          text: "\$93.89\n",
+                          style: TextStyle(
+                            fontSize: 24.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "Total",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ]),
+                    ),
+
+                    Spacer(),
+
+                    // icon in container; btn
+                    GestureDetector(
+                      onTap: (){
+                        print("on clicked : move next page");
+                      },
+                      child: Container(
+                        width: 64.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(radius /2),
+                          color: Colors.black,
+                        ),
+                        child: Center(
+                          child: Icon(Icons.arrow_forward_ios, size: 24.0, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
