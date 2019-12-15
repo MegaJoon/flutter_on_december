@@ -117,6 +117,12 @@ class _SecondShoesPageState extends State<SecondShoesPage> {
                 ],
               ),
             ),
+
+            // listview
+            Flexible(
+              fit: FlexFit.tight,
+              child: Placeholder(),
+            ),
           ],
         ),
       ),
