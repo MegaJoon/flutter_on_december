@@ -9,7 +9,7 @@ class ShoesApp extends StatefulWidget {
   _ShoesAppState createState() => _ShoesAppState();
 }
 
-class _ShoesAppState extends State<ShoesApp> with SingleTickerProviderStateMixin {
+class _ShoesAppState extends State<ShoesApp> with TickerProviderStateMixin {
   // String
   String title = "Sof Sole Men's\n";
   String title2 = "for active people";
@@ -22,9 +22,16 @@ class _ShoesAppState extends State<ShoesApp> with SingleTickerProviderStateMixin
   // color
   Color _color = Color.fromRGBO(224, 65, 145, 1);
 
-  // animation
+  //
+  bool isShowContainer = false;
+
+  // wave animation
   AnimationController _controller;
   Animation<double> animation;
+
+  // bounce animation
+  AnimationController _bounceController;
+  Animation<double> bounceAnimation;
 
   @override
   void initState() {
@@ -40,12 +47,36 @@ class _ShoesAppState extends State<ShoesApp> with SingleTickerProviderStateMixin
       }
     });
     _controller.forward();
+
+    _bounceController = AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    bounceAnimation = Tween<double>(begin: 0.0, end: pi / 8)
+        .animate(
+        CurvedAnimation(
+            parent: _bounceController,
+            curve: Curves.fastOutSlowIn,
+            reverseCurve: Curves.fastOutSlowIn,
+        ),
+    )
+    ..addListener((){
+      setState(() {
+      });
+    })
+    ..addStatusListener((status){
+      if(status == AnimationStatus.completed){
+        _bounceController.reverse();
+      } else if(status == AnimationStatus.dismissed){
+        _bounceController.forward();
+        _bounceController.dispose();
+      }
+    });
+
     super.initState();
   }
 
   @override
   void dispose() {
     _controller?.dispose();
+    _bounceController?.dispose();
     super.dispose();
   }
 
@@ -179,85 +210,176 @@ class _ShoesAppState extends State<ShoesApp> with SingleTickerProviderStateMixin
               // main box
               Flexible(
                 fit: FlexFit.tight,
-                child: Container(
-                  margin: EdgeInsets.only(top: padding),
-                  child: Stack(
-                    children: <Widget>[
-                      // image
-                      Positioned.fill(
-                          child: Image.asset(
-                            _image,
-                            fit: BoxFit.contain,
-                          ),
-                      ),
+                child: GestureDetector(
+                  onTap: (){
+                    // on clicked event : show build chart in container
+                    print("show chart in container");
 
-                      // wave container
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          height: 100.0,
-                          width: 64.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(radius /2),
-                            color: Colors.white,
-                            boxShadow: [BoxShadow(
-                              color: Colors.black12,
-                              spreadRadius: 1.0,
-                              blurRadius: 1.0,
-                              offset: Offset(1.0, 1.0),
-                            )],
-                          ),
-                          child: Stack(
-                            children: <Widget>[
-                              // wave color container
-                              Positioned(
-                                top: 100 * 0.20,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                child: ClipPath(
-                                  clipper: WaveClipper(animation.value),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(radius /2),
-                                        bottomRight: Radius.circular(radius /2),
+                    isShowContainer = true;
+                    _bounceController.forward();
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: padding),
+                    child: Stack(
+                      children: <Widget>[
+                        // image
+                        Positioned.fill(
+                            child: Image.asset(
+                              _image,
+                              fit: BoxFit.contain,
+                            ),
+                        ),
+
+                        // wave container
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Container(
+                            height: 100.0,
+                            width: 64.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius /2),
+                              color: Colors.white,
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 1.0,
+                                blurRadius: 1.0,
+                                offset: Offset(1.0, 1.0),
+                              )],
+                            ),
+                            child: Stack(
+                              children: <Widget>[
+                                // wave color container
+                                Positioned(
+                                  top: 100 * 0.20,
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  child: ClipPath(
+                                    clipper: WaveClipper(animation.value),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(radius /2),
+                                          bottomRight: Radius.circular(radius /2),
+                                        ),
+                                        color: _color,
                                       ),
-                                      color: _color,
                                     ),
                                   ),
                                 ),
-                              ),
 
-                              // text
-                              Positioned.fill(
-                                child: Center(
-                                  child: RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(children: [
-                                      // text : 85%
-                                      TextSpan(text: "85%\n",
-                                        style: TextStyle(
-                                          fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.bold,
+                                // text
+                                Positioned.fill(
+                                  child: Center(
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(children: [
+                                        // text : 85%
+                                        TextSpan(text: "85%\n",
+                                          style: TextStyle(
+                                            fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+
+                                        // text : Comfort
+                                        TextSpan(text: "Comfort",
+                                          style: TextStyle(
+                                            fontSize: 10.0, color: Colors.white, fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ]),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // chart in container
+                        isShowContainer? Positioned(
+                          top: 150.0,
+                          left: 50.0,
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 100),
+                            curve: Curves.bounceInOut,
+                            child: Transform.translate(
+                              offset: Offset(0.0, bounceAnimation.value * -64.0),
+                              child: Transform.rotate(
+                                angle: -bounceAnimation.value,
+                                child: Container(
+                                  padding: EdgeInsets.only(top: padding, left: padding, bottom: padding),
+                                  height: 150.0,
+                                  width: 250.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(radius),
+                                    color: Colors.white.withOpacity(0.80),
+                                    boxShadow: [BoxShadow(
+                                      color: Colors.black12,
+                                      spreadRadius: 1.0,
+                                      blurRadius: 1.0,
+                                    )],
+                                  ),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      // text : Saggitla plane
+                                      Positioned(
+                                        top: 0,
+                                        left: 0,
+                                        child: Text("Saggital Plane",
+                                          style: TextStyle(
+                                            fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
 
-                                      // text : Comfort
-                                      TextSpan(text: "Comfort",
-                                        style: TextStyle(
-                                          fontSize: 10.0, color: Colors.white, fontWeight: FontWeight.w600,
+                                      // draw chart
+                                      Positioned(
+                                        top: padding *2,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        child: CustomPaint(
+                                          painter: ChartPaint(),
                                         ),
                                       ),
-                                    ]),
+
+                                      // text : 46%
+                                      Positioned(
+                                        top: padding,
+                                        right: padding,
+                                        child: Container(
+                                          height: 24.0,
+                                          width: 48.0,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(radius /4),
+                                            color: Colors.white,
+                                            boxShadow: [BoxShadow(
+                                              color: Colors.black12,
+                                              spreadRadius: 1.0,
+                                              blurRadius: 1.0,
+                                              offset: Offset(1.0, 1.0),
+                                            )],
+                                          ),
+                                          child: Center(
+                                              child: Text("46%",
+                                                style: TextStyle(
+                                                  fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    ],
+                        ) : Container(),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -318,6 +440,7 @@ class _ShoesAppState extends State<ShoesApp> with SingleTickerProviderStateMixin
   }
 }
 
+// draw wave shape
 class WaveClipper extends CustomClipper<Path> {
   final double animationValue;
 
@@ -351,8 +474,48 @@ class WaveClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
 
+// draw chart
+class ChartPaint extends CustomPainter {
+  // color
+  Color _color = Color.fromRGBO(224, 65, 145, 1);
 
+  @override
+  void paint(Canvas canvas, Size size) {
+    // draw chart
+    var paint = Paint()
+    ..strokeCap = StrokeCap.round
+    ..strokeWidth = 3.0
+    ..style = PaintingStyle.stroke
+    ..color = _color;
 
+    var path = Path()
+    ..moveTo(0.0, size.height * 0.80)
+    ..quadraticBezierTo(size.width * 0.10, size.height * 0.80, size.width * 0.20, size.height * 0.50)
+    ..quadraticBezierTo(size.width * 0.30, size.height * 0.10, size.width * 0.35, size.height * 0.50)
+    ..quadraticBezierTo(size.width * 0.40, size.height * 0.80, size.width * 0.45, size.height * 0.50)
+    ..quadraticBezierTo(size.width * 0.50, size.height * 0.02, size.width * 0.60, size.height * 0.0)
+    ..quadraticBezierTo(size.width * 0.70, size.height * 0.02, size.width * 0.75, size.height * 0.50)
+    ..quadraticBezierTo(size.width * 0.80, size.height * 0.80, size.width * 0.85, size.height * 0.70)
+    ..quadraticBezierTo(size.width * 0.90, size.height * 0.60, size.width, size.height * 0.30);
+
+    canvas.drawPath(path, paint);
+
+    // draw line
+    var paint2 = Paint()
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 0.5
+      ..style = PaintingStyle.stroke
+      ..color = _color.withOpacity(0.80);
+
+    Offset p1 = Offset(size.width * 0.60, -16.0);
+    Offset p2 = Offset(size.width * 0.60, size.height);
+
+    canvas.drawLine(p1, p2, paint2);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
 
 
 
