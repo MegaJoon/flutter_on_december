@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_on_december/1214/second_shoes_page.dart';
 
 // https://www.instagram.com/p/B42WkyxgeJ5/?igshid=bme4t2d6fxc6
 
@@ -417,6 +418,8 @@ class _ShoesAppState extends State<ShoesApp> with TickerProviderStateMixin {
                     GestureDetector(
                       onTap: (){
                         print("on clicked : move next page");
+                        // move next page
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SecondShoesPage()));
                       },
                       child: Container(
                         width: 64.0,
