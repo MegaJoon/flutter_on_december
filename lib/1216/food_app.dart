@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_on_december/1216/food_list.dart';
 import 'package:flutter_on_december/1216/food_tabs.dart';
+import 'package:flutter_on_december/1216/shopping_cart_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // https://www.instagram.com/p/B447YpOnfuf/?igshid=1u5qytb1rlrkk
@@ -161,128 +162,141 @@ class _FoodAppState extends State<FoodApp> with SingleTickerProviderStateMixin {
                   itemBuilder: (context, index){
                     _currentIndex == index? nowPage = true : nowPage = false;
 
-                    return Transform.translate(
-                      offset: Offset(-padding * 2.8, 0.0),
-                      child: Container(
-                        padding: EdgeInsets.only(right: padding *2),
-                        child: Stack(
-                          children: <Widget>[
-                            // background
-                            Positioned(
-                              top: 80.0,
-                              left: 0,
-                              right: 0,
-                              bottom: nowPage? 8.0: padding + 8.0,
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    top: nowPage? 64.0 : 120.0,
-                                    left: padding,
-                                    right: padding,
-                                    bottom: nowPage? padding : padding *3,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(radius),
-                                  color: foodList[index].color,
-                                  boxShadow: [BoxShadow(
-                                    color: Colors.black12,
-                                    spreadRadius: 4.0,
-                                    blurRadius: 8.0,
-                                  )],
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    // icon : score
-                                    Row(
+                    return GestureDetector(
+                      onTap: (){
+                        // move next page
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ShoppingCartPage(index)));
+                      },
+
+                      child: Transform.translate(
+                        offset: Offset(-padding * 2.8, 0.0),
+                        child: Container(
+                          padding: EdgeInsets.only(right: padding *2),
+                          child: Stack(
+                            children: <Widget>[
+                              // background
+                              Positioned(
+                                top: 80.0,
+                                left: 0,
+                                right: 0,
+                                bottom: nowPage? 8.0: padding + 8.0,
+                                child: Hero(
+                                  tag: "background $index",
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                        top: nowPage? 64.0 : 120.0,
+                                        left: padding,
+                                        right: padding,
+                                        bottom: nowPage? padding : padding *3,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(radius),
+                                      color: foodList[index].color,
+                                      boxShadow: [BoxShadow(
+                                        color: Colors.black12,
+                                        spreadRadius: 4.0,
+                                        blurRadius: 8.0,
+                                      )],
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Icon(Icons.star, size: 8.0, color: Colors.white),
-                                        Icon(Icons.star, size: 8.0, color: Colors.white),
-                                        Icon(Icons.star, size: 8.0, color: Colors.white),
-                                        Icon(Icons.star, size: 8.0, color: Colors.white),
-                                        Icon(Icons.star, size: 8.0, color: Colors.grey),
-                                      ],
-                                    ),
-
-                                    SizedBox(height: padding /2),
-
-                                    // text : title
-                                    Text(foodList[index].title,
-                                      style: TextStyle(
-                                        fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-
-                                    Spacer(),
-
-                                    // text : description
-                                    nowPage? Text(foodList[index].description,
-                                      style: TextStyle(
-                                        fontSize: 12.0, color: Colors.white30, fontWeight: FontWeight.w400,
-                                      ),
-                                    ) : Container(),
-
-                                    // text : price
-                                    Text(foodList[index].price,
-                                      style: TextStyle(
-                                        fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-
-                                    // container
-                                    nowPage? Container(
-                                      margin: EdgeInsets.only(top: padding),
-                                      alignment: Alignment.centerRight,
-                                      height: 40.0,
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(horizontal: padding /2),
-                                        height: 40.0,
-                                        width: 120.0,
-                                        decoration: ShapeDecoration(
-                                          shape: StadiumBorder(),
-                                          color: Colors.white,
-                                          shadows: [BoxShadow(
-                                            color: Colors.black12,
-                                            spreadRadius: 1.0,
-                                            blurRadius: 1.0,
-                                          )],
-                                        ),
-                                        child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        // icon : score
+                                        Row(
                                           children: <Widget>[
-                                            Icon(Icons.add_photo_alternate, size: 16.0, color: Colors.grey),
-
-                                            Text("Add to cart",
-                                              style: TextStyle(
-                                                fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
+                                            Icon(Icons.star, size: 8.0, color: Colors.white),
+                                            Icon(Icons.star, size: 8.0, color: Colors.white),
+                                            Icon(Icons.star, size: 8.0, color: Colors.white),
+                                            Icon(Icons.star, size: 8.0, color: Colors.white),
+                                            Icon(Icons.star, size: 8.0, color: Colors.grey),
                                           ],
                                         ),
-                                      ),
-                                    ) : Container(),
-                                  ],
-                                ),
-                              ),
-                            ),
 
-                            // image
-                            AnimatedPositioned(
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.fastOutSlowIn,
-                              top: nowPage? 0 : 48.0,
-                              left: 0,
-                              right: 0,
-                              child: Transform.rotate(
-                                angle: nowPage? animation.value : 0.0,
-                                child: Image.asset(
-                                    foodList[index].image,
-                                    fit: BoxFit.contain,
-                                  height: nowPage? 150.0 : 100.0,
+                                        SizedBox(height: padding /2),
+
+                                        // text : title
+                                        Text(foodList[index].title,
+                                          style: TextStyle(
+                                            fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+
+                                        Spacer(),
+
+                                        // text : description
+                                        nowPage? Text(foodList[index].description,
+                                          style: TextStyle(
+                                            fontSize: 12.0, color: Colors.white30, fontWeight: FontWeight.w400,
+                                          ),
+                                        ) : Container(),
+
+                                        // text : price
+                                        Text(foodList[index].price,
+                                          style: TextStyle(
+                                            fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+
+                                        // container
+                                        nowPage? Container(
+                                          margin: EdgeInsets.only(top: padding),
+                                          alignment: Alignment.centerRight,
+                                          height: 40.0,
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal: padding /2),
+                                            height: 40.0,
+                                            width: 120.0,
+                                            decoration: ShapeDecoration(
+                                              shape: StadiumBorder(),
+                                              color: Colors.white,
+                                              shadows: [BoxShadow(
+                                                color: Colors.black12,
+                                                spreadRadius: 1.0,
+                                                blurRadius: 1.0,
+                                              )],
+                                            ),
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: <Widget>[
+                                                Icon(Icons.add_photo_alternate, size: 16.0, color: Colors.grey),
+
+                                                Text("Add to cart",
+                                                  style: TextStyle(
+                                                    fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ) : Container(),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+
+                              // image
+                              AnimatedPositioned(
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.fastOutSlowIn,
+                                top: nowPage? 0 : 48.0,
+                                left: 0,
+                                right: 0,
+                                child: Hero(
+                                  tag: "image $index",
+                                  child: Transform.rotate(
+                                    angle: nowPage? animation.value : 0.0,
+                                    child: Image.asset(
+                                        foodList[index].image,
+                                        fit: BoxFit.contain,
+                                      height: nowPage? 150.0 : 100.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );

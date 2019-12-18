@@ -40,8 +40,8 @@ class MyApp extends StatelessWidget {
 //      home: WorkLifeBalance(),  // 12-11
 //      home: MovieCharachterUI(),  // 12-12
 //      home: ShoesApp(),  // 12-14
-//      home: FoodApp(),  // 12-16
-      home: NikeApp(),  // 12-17
+      home: FoodApp(),  // 12-16
+//      home: NikeApp(),  // 12-17
     );
   }
 }
