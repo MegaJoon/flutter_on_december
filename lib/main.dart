@@ -18,6 +18,7 @@ import 'package:flutter_on_december/1214/shoes_app.dart';
 import 'package:flutter_on_december/1216/food_app.dart';
 import 'package:flutter_on_december/1217/nike_app.dart';
 import 'package:flutter_on_december/1219/sneaker_app.dart';
+import 'package:flutter_on_december/1220/angry_bird_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
 //      home: ShoesApp(),  // 12-14
 //      home: FoodApp(),  // 12-16
 //      home: NikeApp(),  // 12-17
-      home: SneakerApp(),  // 12-19
+//      home: SneakerApp(),  // 12-19
+      home: AngryBirdsApp(),  // 12-20
     );
   }
 }
