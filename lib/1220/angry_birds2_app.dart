@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_on_december/1220/movie_list.dart';
 import 'package:video_player/video_player.dart';
 
+// https://flutter.dev/docs/cookbook/plugins/play-video
+
 class AngryBirds2App extends StatefulWidget {
   final int index;
 
