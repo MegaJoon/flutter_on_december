@@ -25,6 +25,26 @@ class _AngryBirds2AppState extends State<AngryBirds2App> {
   // double
   double padding = 16.0;
 
+  // video player
+  VideoPlayerController _controller;
+  Future<void> _initializeVideoPlayerFuture;
+
+  String _videoSource = "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4";
+
+  @override
+  void initState() {
+    _controller = VideoPlayerController.network(_videoSource);
+    _initializeVideoPlayerFuture = _controller.initialize();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +64,51 @@ class _AngryBirds2AppState extends State<AngryBirds2App> {
                     children: <Widget>[
                       // top container: movie
                       Flexible(
-                        child: Placeholder(),
+                        child: Stack(
+                          children: <Widget>[
+                            // video
+                            Positioned.fill(
+                                child: FutureBuilder(
+                                  future: _initializeVideoPlayerFuture,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState == ConnectionState.done) {
+                                      return AspectRatio(
+                                        aspectRatio: _controller.value
+                                            .aspectRatio,
+                                        child: VideoPlayer(_controller),
+                                      );
+                                    } else {
+                                      return Placeholder();
+                                    }
+                                  }
+                                ),
+                            ),
+
+                            // play btn
+                            Positioned.fill(
+                              child: Center(
+                                child: FloatingActionButton(
+                                  backgroundColor: Colors.white,
+                                  onPressed: (){
+                                    setState(() {
+                                      if(_controller.value.isPlaying){
+                                        _controller.pause();
+                                      } else {
+                                        _controller.play();
+                                      }
+                                    });
+                                  },
+                                  child: Icon(
+                                    _controller.value.isPlaying?
+                                        Icons.pause : Icons.play_arrow,
+                                    size: 40.0,
+                                      color: Colors.grey[500],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
 
                       // bottom container: movie title
