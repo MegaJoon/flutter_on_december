@@ -41,6 +41,21 @@ class _FinancingAppState extends State<FinancingApp> {
   Color _paymentsColor = Color.fromRGBO(255, 203, 190, 1);
   Color _paymentsColor1 = Color.fromRGBO(237, 237, 237, 1);
 
+  // PageController
+  PageController _pageController;
+
+  // pageview index
+  int selectedIndex = 0;
+
+  @override
+  void initState() {
+    _pageController = PageController(
+      initialPage: selectedIndex,
+      viewportFraction: 0.80,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     _definePages();
@@ -914,7 +929,16 @@ class _FinancingAppState extends State<FinancingApp> {
                 child: Container(
                   height: 64.0,
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      // left icon
+                      Icon(
+                        Icons.arrow_back,
+                        size: 28.0,
+                        color: Colors.black,
+                      ),
+
                       // text: Cards
                       Text("Cards",
                         style: TextStyle(
@@ -923,9 +947,6 @@ class _FinancingAppState extends State<FinancingApp> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-
-                      // spacer
-                      Spacer(),
 
                       // right icon
                       Transform.rotate(
@@ -943,6 +964,20 @@ class _FinancingAppState extends State<FinancingApp> {
                       ),
                     ],
                   ),
+                ),
+              ),
+
+              // pageview
+              Container(
+                height: 150.0,
+                child: PageView(
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  children: <Widget>[
+                    Container(
+                      child: Placeholder(),
+                    ),
+                  ],
                 ),
               ),
 
