@@ -31,6 +31,12 @@ class _FinancingAppState extends State<FinancingApp> {
   // color list
   Color _depositColor = Color.fromRGBO(87, 151, 246, 1);
   Color _withdrawColor = Color.fromRGBO(230, 94, 151, 1);
+  
+  Color _color00 = Color.fromRGBO(252, 136, 192, 1);
+  Color _color01 = Color.fromRGBO(161, 186, 255, 1);
+
+  Color _color10 = Color.fromRGBO(255, 147, 176, 1);
+  Color _color11 = Color.fromRGBO(252, 243, 161, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -243,7 +249,256 @@ class _FinancingAppState extends State<FinancingApp> {
                 ),
               ),
 
-              // 
+              // list 1.
+              Container(
+                height: 180.0,
+                child: Column(
+                  children: <Widget>[
+                    // text: card - view all
+                    Container(
+                      margin: EdgeInsets.only(top: padding, right: padding),
+                      height: 32.0,
+                      child: Row(
+                        children: <Widget>[
+                          // text: Cards
+                          Text("Cards",
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          // spacer
+                          Spacer(),
+
+                          // text: view all
+                          Text("View all",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: _depositColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // listview 1.
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(bottom: padding),
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          // master card
+                          Container(
+                            padding: EdgeInsets.all(padding),
+                            margin: EdgeInsets.only(right: padding),
+                            width: 230.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius),
+                              gradient: LinearGradient(
+                                colors: [_color00, _color01],
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 2.0,
+                                blurRadius: 2.0,
+                              )],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                // text: bank name
+                                Row(
+                                  children: <Widget>[
+                                    // container: master card logo
+                                    Container(
+                                      margin: EdgeInsets.only(right: padding),
+                                      height: 16.0,
+                                      width: 28.0,
+                                      child: Stack(
+                                        children: <Widget>[
+                                          // left circle container
+                                          Positioned(
+                                            top: 0,
+                                            left: 0,
+                                            bottom: 0,
+                                            child: Container(
+                                              width: 16.0,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.red.withOpacity(0.80),
+                                              ),
+                                            ),
+                                          ),
+
+                                          // right circle container
+                                          Positioned(
+                                            top: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            child: Container(
+                                              width: 16.0,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.orange.withOpacity(0.80),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    // Text: bank name
+                                    Text("Bank name".toUpperCase(),
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                // text: balance
+                                Text("\$ 823,74.00",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+
+                                // text: account number
+                                Row(
+                                  children: <Widget>[
+                                    // text: account number
+                                    Text("**** 8293",
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+
+                                    // spacer
+                                    Spacer(),
+
+                                    // text: expired date
+                                    Text("06/24",
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // visa card
+                          Container(
+                            padding: EdgeInsets.all(padding),
+                            margin: EdgeInsets.only(right: padding),
+                            width: 230.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius),
+                              gradient: LinearGradient(
+                                colors: [_color10, _color11],
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 2.0,
+                                blurRadius: 2.0,
+                              )],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                // text: bank name
+                                Row(
+                                  children: <Widget>[
+                                    // text: visa card logo
+                                    Text("Visa".toUpperCase(),
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Colors.indigo,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                    ),
+
+                                    // spacer
+                                    SizedBox(width: padding),
+
+                                    // Text: bank name
+                                    Text("Bank name".toUpperCase(),
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                // text: balance
+                                Text("\$ 335,90.55",
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+
+                                // text: account number
+                                Row(
+                                  children: <Widget>[
+                                    // text: account number
+                                    Text("**** 8293",
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+
+                                    // spacer
+                                    Spacer(),
+
+                                    // text: expired date
+                                    Text("06/24",
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    
+                  ],
+                ),
+              ),
+
               Placeholder(),
               Placeholder(),
               Placeholder(),
