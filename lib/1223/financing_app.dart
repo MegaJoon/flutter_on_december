@@ -18,7 +18,7 @@ class _FinancingAppState extends State<FinancingApp> {
   double radius = 8.0;
 
   // bottom tab index
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   // bottom tab Function
   void _onPressed(int num){
@@ -113,8 +113,7 @@ class _FinancingAppState extends State<FinancingApp> {
 
   _definePages(){
     pages = [
-      // I use this page
-//      Placeholder(color: Colors.red),
+      // part 1
       SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -899,10 +898,65 @@ class _FinancingAppState extends State<FinancingApp> {
         ),
       ),
 
+      // part 2
+      SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: EdgeInsets.only(left: padding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // appbar
+              SafeArea(
+                top: true,
+                left: true,
+                right: true,
+                child: Container(
+                  height: 64.0,
+                  child: Row(
+                    children: <Widget>[
+                      // text: Cards
+                      Text("Cards",
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+
+                      // spacer
+                      Spacer(),
+
+                      // right icon
+                      Transform.rotate(
+                        angle: 1.56,
+                        child: IconButton(
+                          onPressed: (){
+                            print("on clicked : right icon in appbar");
+                          },
+                          icon: Icon(
+                            Icons.tune,
+                            size: 28.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // placeholder
+              Placeholder(),
+              Placeholder(),
+              Placeholder(),
+            ],
+          ),
+        ),
+      ),
       ////////////////////////////////////////////////
       ////////////////////////////////////////////////
       // dont use
-      Placeholder(color: Colors.amber),
       Placeholder(color: Colors.tealAccent),
       Placeholder(color: Colors.indigo),
     ];
