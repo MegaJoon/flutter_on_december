@@ -103,24 +103,102 @@ class _FinancingAppState extends State<FinancingApp> {
 //      Placeholder(color: Colors.red),
       SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // appbar
-            SafeArea(
-              top: true,
-              left: true,
-              right: true,
-              child: Container(
-                height: 40.0,
+        child: Padding(
+          padding: EdgeInsets.only(left: padding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // appbar
+              SafeArea(
+                top: true,
+                left: true,
+                right: true,
+                child: Container(
+                  height: 64.0,
+                  child: Row(
+                    children: <Widget>[
+                      // text: Wallet
+                      Text("Wallet",
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+
+                      // spacer
+                      Spacer(),
+
+                      // right icon
+                      Transform.rotate(
+                        angle: 1.56,
+                        child: IconButton(
+                          onPressed: (){
+                            print("on clicked : right icon in appbar");
+                          },
+                          icon: Icon(
+                            Icons.tune,
+                            size: 28.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // text: total price
+              Container(
+                height: 64.0,
+                child: Row(
+                  children: <Widget>[
+                    // left text: total text
+                    Text("\$16,180.34",
+                      style: TextStyle(
+                        fontSize: 32.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    // spacer
+                    Spacer(),
+
+                    // container box: Text: USD
+                    Container(
+                      margin: EdgeInsets.only(right: padding),
+                      height: 32.0,
+                      width: 64.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.black,
+                      ),
+                      child: Center(
+                          child: Text("USD",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // containers: deposit; withdraw
+              Container(
+                height: 64.0,
                 child: Placeholder(),
               ),
-            ),
 
-            Placeholder(),
-            Placeholder(),
-            Placeholder(),
-          ],
+              Placeholder(),
+              Placeholder(),
+              Placeholder(),
+            ],
+          ),
         ),
       ),
 
