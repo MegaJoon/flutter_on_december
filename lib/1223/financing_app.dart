@@ -973,8 +973,51 @@ class _FinancingAppState extends State<FinancingApp> {
                 child: PageView(
                   scrollDirection: Axis.horizontal,
                   controller: _pageController,
+
                   children: <Widget>[
+                    // first page
                     Container(
+                      padding: EdgeInsets.all(padding),
+                      margin: EdgeInsets.only(right: padding),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(radius),
+                        gradient: LinearGradient(
+                          colors: [_color00, _color01],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
+                        boxShadow: [BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 2.0,
+                          blurRadius: 2.0,
+                        )],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          // text: Capital one
+
+
+                          // text: account number
+
+                          // text: cardholder name \ expired date
+
+                        ],
+                      ),
+                    ),
+
+                    // second page
+                    Container(
+                      margin: EdgeInsets.only(right: padding),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(radius),
+                        gradient: LinearGradient(
+                          colors: [_color00, _color01],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
+                      ),
                       child: Placeholder(),
                     ),
                   ],
