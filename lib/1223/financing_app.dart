@@ -10,6 +10,9 @@ class FinancingApp extends StatefulWidget {
 }
 
 class _FinancingAppState extends State<FinancingApp> {
+  // list widget
+  List<Widget> pages;
+
   // double
   double padding = 16.0;
 
@@ -26,21 +29,14 @@ class _FinancingAppState extends State<FinancingApp> {
 
   @override
   Widget build(BuildContext context) {
+    _definePages();
+
     return Scaffold(
       body: Stack(
         children: <Widget>[
           // main: column
           Positioned.fill(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: <Widget>[
-                    Placeholder(),
-                    Placeholder(),
-                    Placeholder(),
-                  ],
-                ),
-              ),
+              child: pages[currentIndex],
           ),
 
           // bottom bar
@@ -99,5 +95,41 @@ class _FinancingAppState extends State<FinancingApp> {
         ],
       ),
     );
+  }
+
+  _definePages(){
+    pages = [
+      // I use this page
+//      Placeholder(color: Colors.red),
+      SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // appbar
+            SafeArea(
+              top: true,
+              left: true,
+              right: true,
+              child: Container(
+                height: 40.0,
+                child: Placeholder(),
+              ),
+            ),
+
+            Placeholder(),
+            Placeholder(),
+            Placeholder(),
+          ],
+        ),
+      ),
+
+      ////////////////////////////////////////////////
+      ////////////////////////////////////////////////
+      // dont use
+      Placeholder(color: Colors.amber),
+      Placeholder(color: Colors.tealAccent),
+      Placeholder(color: Colors.indigo),
+    ];
   }
 }
