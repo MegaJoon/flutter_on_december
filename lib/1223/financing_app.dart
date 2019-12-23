@@ -15,6 +15,7 @@ class _FinancingAppState extends State<FinancingApp> {
 
   // double
   double padding = 16.0;
+  double radius = 8.0;
 
   // bottom tab index
   int currentIndex = 0;
@@ -26,6 +27,10 @@ class _FinancingAppState extends State<FinancingApp> {
       print("currentIndex = $currentIndex");
     });
   }
+  
+  // color list
+  Color _depositColor = Color.fromRGBO(87, 151, 246, 1);
+  Color _withdrawColor = Color.fromRGBO(230, 94, 151, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +176,7 @@ class _FinancingAppState extends State<FinancingApp> {
                       height: 32.0,
                       width: 64.0,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(radius),
                         color: Colors.black,
                       ),
                       child: Center(
@@ -190,10 +195,55 @@ class _FinancingAppState extends State<FinancingApp> {
 
               // containers: deposit; withdraw
               Container(
+                margin: EdgeInsets.only(right: padding),
                 height: 64.0,
-                child: Placeholder(),
+                child: Row(
+                  children: <Widget>[
+                    // container: Text: deposit
+                    Flexible(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(radius),
+                          color: _depositColor,
+                        ),
+                        child: Center(
+                          child: Text("Deposit",
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // spacer
+                    SizedBox(width: padding),
+
+                    // container: Text: withdraw
+                    Flexible(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(radius),
+                          color: _withdrawColor,
+                        ),
+                        child: Center(
+                          child: Text("Withdraw",
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
+              // 
               Placeholder(),
               Placeholder(),
               Placeholder(),
