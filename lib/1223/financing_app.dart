@@ -42,6 +42,8 @@ class _FinancingAppState extends State<FinancingApp> {
   Color _paymentsColor = Color.fromRGBO(255, 203, 190, 1);
   Color _paymentsColor1 = Color.fromRGBO(237, 237, 237, 1);
 
+  Color _plusColor = Color.fromRGBO(146, 219, 145, 1);
+
   // PageController
   PageController _pageController;
 
@@ -970,7 +972,9 @@ class _FinancingAppState extends State<FinancingApp> {
 
               // pageview
               Container(
-                height: 150.0,
+                padding: EdgeInsets.only(bottom: 2.0),
+                margin: EdgeInsets.only(top: padding),
+                height: 140.0,
                 child: PageView(
                   scrollDirection: Axis.horizontal,
                   controller: _pageController,
@@ -983,7 +987,7 @@ class _FinancingAppState extends State<FinancingApp> {
                     // first page
                     Container(
                       padding: EdgeInsets.all(padding),
-                      margin: EdgeInsets.only(right: padding),
+                      margin: EdgeInsets.only(right: padding, bottom: 2.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
                         gradient: LinearGradient(
@@ -1089,7 +1093,7 @@ class _FinancingAppState extends State<FinancingApp> {
                     // second page
                     Container(
                       padding: EdgeInsets.all(padding),
-                      margin: EdgeInsets.only(right: padding),
+                      margin: EdgeInsets.only(right: padding, bottom: 2.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
                         gradient: LinearGradient(
@@ -1195,7 +1199,7 @@ class _FinancingAppState extends State<FinancingApp> {
                     // 22
                     Container(
                       padding: EdgeInsets.all(padding),
-                      margin: EdgeInsets.only(right: padding),
+                      margin: EdgeInsets.only(right: padding, bottom: 2.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
                         gradient: LinearGradient(
@@ -1299,7 +1303,7 @@ class _FinancingAppState extends State<FinancingApp> {
                     ),
                     Container(
                       padding: EdgeInsets.all(padding),
-                      margin: EdgeInsets.only(right: padding),
+                      margin: EdgeInsets.only(right: padding, bottom: 2.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
                         gradient: LinearGradient(
@@ -1407,7 +1411,7 @@ class _FinancingAppState extends State<FinancingApp> {
 
               // dots indicator
               Container(
-                height: 32.0,
+                height: 24.0,
                 child: Center(
                   child: DotsIndicator(
                     dotsCount: 4,
@@ -1423,6 +1427,384 @@ class _FinancingAppState extends State<FinancingApp> {
                   ),
                 ),
               ),
+
+              // text: History
+              Container(
+                margin: EdgeInsets.only(top: padding, right: padding, bottom: padding),
+                height: 32.0,
+                child: Row(
+                  children: <Widget>[
+                    // text: History
+                    Text("History",
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
+                    // spacer
+                    Spacer(),
+
+                    // text: view all
+                    Text("View all",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: _depositColor,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // text: Yesterday
+              Text("Yesterday",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+
+              // container
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                margin: EdgeInsets.only(top: padding /2, right: padding),
+                height: 64.0,
+                child: Row(
+                  children: <Widget>[
+                    // left icon in container
+                    Container(
+                      margin: EdgeInsets.only(right: padding),
+                      width: 64.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.blueGrey.withOpacity(0.50),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          FontAwesomeIcons.utensils,
+                          size: 24.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
+                    // column text
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: Capital One
+                          Text("Capital One",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Cashback
+                          Text("Cashback",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // column text
+                    Container(
+                      width: 120.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: price
+                          Text("+\$48.50",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: _plusColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Bank Service
+                          Text("Bank Service",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                margin: EdgeInsets.only(top: padding /2, right: padding),
+                height: 64.0,
+                child: Row(
+                  children: <Widget>[
+                    // left icon in container
+                    Container(
+                      margin: EdgeInsets.only(right: padding),
+                      width: 64.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromRGBO(210, 121, 85, 1),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          FontAwesomeIcons.hamburger,
+                          size: 24.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
+                    // column text
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: Capital One
+                          Text("Capital One",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Burger King
+                          Text("Burger King",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // column text
+                    Container(
+                      width: 120.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: price
+                          Text("-\$32.44",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.red,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Fast Food
+                          Text("Fast Food",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: padding),
+
+              // text: 19 December
+              Text("19 December",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+
+              // container
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                margin: EdgeInsets.only(top: padding /2, right: padding),
+                height: 64.0,
+                child: Row(
+                  children: <Widget>[
+                    // left icon in container
+                    Container(
+                      margin: EdgeInsets.only(right: padding),
+                      width: 64.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.blueGrey.withOpacity(0.50),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          FontAwesomeIcons.home,
+                          size: 24.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
+                    // column text
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: Capital One
+                          Text("Capital One",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Bank Invoice
+                          Text("Bank Invoice",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // column text
+                    Container(
+                      width: 120.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: price
+                          Text("+\$2,300.00",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: _plusColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Bank Service
+                          Text("Bank Service",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                margin: EdgeInsets.only(top: padding /2, right: padding),
+                height: 64.0,
+                child: Row(
+                  children: <Widget>[
+                    // left icon in container
+                    Container(
+                      margin: EdgeInsets.only(right: padding),
+                      width: 64.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                      ),
+                      child: Center(
+                        child: Icon(
+                          FontAwesomeIcons.creditCard,
+                          size: 24.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
+                    // column text
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: Capital One
+                          Text("Capital One",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Card Transfer
+                          Text("Card Transfer",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // column text
+                    Container(
+                      width: 120.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          // text: price
+                          Text("-\$500.00",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.red,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
+                          // text: Transfer
+                          Text("Transfer",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: padding),
 
               // placeholder
               Placeholder(),
