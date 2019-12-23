@@ -38,6 +38,9 @@ class _FinancingAppState extends State<FinancingApp> {
   Color _color10 = Color.fromRGBO(255, 147, 176, 1);
   Color _color11 = Color.fromRGBO(252, 243, 161, 1);
 
+  Color _paymentsColor = Color.fromRGBO(255, 203, 190, 1);
+  Color _paymentsColor1 = Color.fromRGBO(237, 237, 237, 1);
+
   @override
   Widget build(BuildContext context) {
     _definePages();
@@ -249,14 +252,14 @@ class _FinancingAppState extends State<FinancingApp> {
                 ),
               ),
 
-              // list 1.
+              // list 1. cards
               Container(
-                height: 180.0,
+                height: 200.0,
                 child: Column(
                   children: <Widget>[
                     // text: card - view all
                     Container(
-                      margin: EdgeInsets.only(top: padding, right: padding),
+                      margin: EdgeInsets.only(top: padding, right: padding, bottom: padding),
                       height: 32.0,
                       child: Row(
                         children: <Widget>[
@@ -284,7 +287,7 @@ class _FinancingAppState extends State<FinancingApp> {
                       ),
                     ),
 
-                    // listview 1.
+                    // listview
                     Flexible(
                       fit: FlexFit.tight,
                       child: ListView(
@@ -493,12 +496,401 @@ class _FinancingAppState extends State<FinancingApp> {
                         ],
                       ),
                     ),
-
-                    
                   ],
                 ),
               ),
 
+              // list 2. payments
+              Container(
+                height: 150.0,
+                child: Column(
+                  children: <Widget>[
+                    // text: payments
+                    Container(
+                      margin: EdgeInsets.only(top: padding, right: padding, bottom: padding),
+                      height: 32.0,
+                      child: Row(
+                        children: <Widget>[
+                          // text: Payments
+                          Text("Paymnets",
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          // spacer
+                          Spacer(),
+
+                          // text: view all
+                          Text("View all",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: _depositColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // listview
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(bottom: padding),
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          // fast food
+                          Container(
+                            padding: EdgeInsets.all(padding),
+                            margin: EdgeInsets.only(right: padding),
+                            width: 250.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius),
+                              color: _paymentsColor,
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 2.0,
+                                blurRadius: 2.0,
+                              )],
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                // icon in container
+                                Container(
+                                  margin: EdgeInsets.only(right: padding),
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(radius /2),
+                                    color: Colors.white,
+                                  ),
+                                  child: Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.pizzaSlice,
+                                      size: 20.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+
+                                // column
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      // text: Fast Food
+                                      Text("Fast Food",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+
+                                      // text: Fast Food
+                                      Text("Subway",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // text: price
+                                Text("-\$12.50",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // coffeteria
+                          Container(
+                            padding: EdgeInsets.all(padding),
+                            margin: EdgeInsets.only(right: padding),
+                            width: 250.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius),
+                              color: _paymentsColor1,
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 2.0,
+                                blurRadius: 2.0,
+                              )],
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                // icon in container
+                                Container(
+                                  margin: EdgeInsets.only(right: padding),
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(radius /2),
+                                    color: Colors.white,
+                                  ),
+                                  child: Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.coffee,
+                                      size: 20.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+
+                                // column
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      // text: Coffeteria
+                                      Text("Coffeteria",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+
+                                      // text: Craftwork
+                                      Text("Craftwork",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // text: price
+                                Text("-\$12.50",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // list 3. Transactions
+              Container(
+                height: 150.0,
+                child: Column(
+                  children: <Widget>[
+                    // text: Transactions
+                    Container(
+                      margin: EdgeInsets.only(top: padding, right: padding, bottom: padding),
+                      height: 32.0,
+                      child: Row(
+                        children: <Widget>[
+                          // text: Transactions
+                          Text("Transactions",
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          // spacer
+                          Spacer(),
+
+                          // text: view all
+                          Text("View all",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: _depositColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // listview
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.only(bottom: padding),
+                        shrinkWrap: true,
+                        children: <Widget>[
+                          // fast food
+                          Container(
+                            padding: EdgeInsets.all(padding),
+                            margin: EdgeInsets.only(right: padding),
+                            width: 250.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius),
+                              color: _paymentsColor,
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 2.0,
+                                blurRadius: 2.0,
+                              )],
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                // icon in container
+                                Container(
+                                  margin: EdgeInsets.only(right: padding),
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(radius /2),
+                                    color: Colors.white,
+                                  ),
+                                  child: Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.pizzaSlice,
+                                      size: 20.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+
+                                // column
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      // text: Fast Food
+                                      Text("Fast Food",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+
+                                      // text: Fast Food
+                                      Text("Subway",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // text: price
+                                Text("-\$12.50",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // coffeteria
+                          Container(
+                            padding: EdgeInsets.all(padding),
+                            margin: EdgeInsets.only(right: padding),
+                            width: 250.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radius),
+                              color: _paymentsColor1,
+                              boxShadow: [BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 2.0,
+                                blurRadius: 2.0,
+                              )],
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                // icon in container
+                                Container(
+                                  margin: EdgeInsets.only(right: padding),
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(radius /2),
+                                    color: Colors.white,
+                                  ),
+                                  child: Center(
+                                    child: Icon(
+                                      FontAwesomeIcons.coffee,
+                                      size: 20.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+
+                                // column
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      // text: Coffeteria
+                                      Text("Coffeteria",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+
+                                      // text: Craftwork
+                                      Text("Craftwork",
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                                // text: price
+                                Text("-\$12.50",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // placeholder
               Placeholder(),
               Placeholder(),
               Placeholder(),
