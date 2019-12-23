@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_on_december/1223/my_bottom_tabs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -973,7 +974,11 @@ class _FinancingAppState extends State<FinancingApp> {
                 child: PageView(
                   scrollDirection: Axis.horizontal,
                   controller: _pageController,
-
+                  onPageChanged: (int _selectedIndex){
+                    setState(() {
+                      selectedIndex = _selectedIndex;
+                    });
+                  },
                   children: <Widget>[
                     // first page
                     Container(
@@ -997,18 +1002,93 @@ class _FinancingAppState extends State<FinancingApp> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           // text: Capital one
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("Capital one",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
 
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Visa",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+
+                            ],
+                          ),
 
                           // text: account number
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("4479 0323 4583 0341",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Platinum".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
 
                           // text: cardholder name \ expired date
+                          Row(
+                            children: <Widget>[
+                              // text: cardholer name
+                              Text("cardholer name".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
 
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("07/23",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
                         ],
                       ),
                     ),
 
                     // second page
                     Container(
+                      padding: EdgeInsets.all(padding),
                       margin: EdgeInsets.only(right: padding),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
@@ -1017,10 +1097,330 @@ class _FinancingAppState extends State<FinancingApp> {
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
                         ),
+                        boxShadow: [BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 2.0,
+                          blurRadius: 2.0,
+                        )],
                       ),
-                      child: Placeholder(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          // text: Capital one
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("Capital one",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Visa",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                          // text: account number
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("4479 0323 4583 0341",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Platinum".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                          // text: cardholder name \ expired date
+                          Row(
+                            children: <Widget>[
+                              // text: cardholer name
+                              Text("cardholer name".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("07/23",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // 22
+                    Container(
+                      padding: EdgeInsets.all(padding),
+                      margin: EdgeInsets.only(right: padding),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(radius),
+                        gradient: LinearGradient(
+                          colors: [_color00, _color01],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
+                        boxShadow: [BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 2.0,
+                          blurRadius: 2.0,
+                        )],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          // text: Capital one
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("Capital one",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Visa",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                          // text: account number
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("4479 0323 4583 0341",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Platinum".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                          // text: cardholder name \ expired date
+                          Row(
+                            children: <Widget>[
+                              // text: cardholer name
+                              Text("cardholer name".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("07/23",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(padding),
+                      margin: EdgeInsets.only(right: padding),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(radius),
+                        gradient: LinearGradient(
+                          colors: [_color00, _color01],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
+                        boxShadow: [BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 2.0,
+                          blurRadius: 2.0,
+                        )],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          // text: Capital one
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("Capital one",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Visa",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                          // text: account number
+                          Row(
+                            children: <Widget>[
+                              // text: Capital one
+                              Text("4479 0323 4583 0341",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("Platinum".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                          // text: cardholder name \ expired date
+                          Row(
+                            children: <Widget>[
+                              // text: cardholer name
+                              Text("cardholer name".toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                              // spacer
+                              Spacer(),
+
+                              // text: Visa
+                              Text("07/23",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
+                ),
+              ),
+
+              // dots indicator
+              Container(
+                height: 32.0,
+                child: Center(
+                  child: DotsIndicator(
+                    dotsCount: 4,
+                    position: selectedIndex.toDouble(),
+                    decorator: DotsDecorator(
+                      color: Colors.grey,
+                      activeColor: Colors.black,
+                      size: Size(8.0, 8.0),
+                      activeSize: Size(24.0, 8.0),
+                      activeShape: StadiumBorder(),
+                      spacing: EdgeInsets.all(4.0),
+                    ),
+                  ),
                 ),
               ),
 
