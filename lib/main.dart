@@ -20,7 +20,6 @@ import 'package:flutter_on_december/1217/nike_app.dart';
 import 'package:flutter_on_december/1219/sneaker_app.dart';
 import 'package:flutter_on_december/1220/angry_bird_app.dart';
 import 'package:flutter_on_december/1223/financing_app.dart';
-import 'package:flutter_on_december/1224/fish_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,8 +47,7 @@ class MyApp extends StatelessWidget {
 //      home: NikeApp(),  // 12-17
 //      home: SneakerApp(),  // 12-19
 //      home: AngryBirdsApp(),  // 12-20
-//      home: FinancingApp(),  // 12-23
-      home: FishApp(),  // 12-24
+      home: FinancingApp(),  // 12-23
     );
   }
 }
