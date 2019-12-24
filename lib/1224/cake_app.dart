@@ -22,7 +22,6 @@ class _CakeAppState extends State<CakeApp> {
   String _iconImage1 = "assets/1224/icon1.png";
   String _iconImage2 = "assets/1224/icon2.png";
 
-  
   // text
   String text = "How would you\nlike to order?";
   
@@ -133,7 +132,7 @@ class _CakeAppState extends State<CakeApp> {
                               style: TextStyle(
                                 fontSize: 40.0,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
@@ -333,10 +332,123 @@ class _CakeAppState extends State<CakeApp> {
 
           // bottom container
           Flexible(
-            child: Placeholder(),
+            child: Padding(
+              padding: EdgeInsets.only(left: padding, bottom: padding),
+              child: Column(
+                children: <Widget>[
+                  // text: Available Now & View All
+                  Container(
+                    margin: EdgeInsets.only(top: padding *2, right: padding),
+                    height: 32.0,
+                    child: Row(
+                      children: <Widget>[
+                        // text: Available Now
+                        Text("Available Now",
+                          style: TextStyle(
+                            fontSize: 24.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        // spacer
+                        Spacer(),
+
+                        // text: View All
+                        Text("View All",
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: _color,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // listview
+                  Flexible(
+                    fit: FlexFit.tight,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        padding: EdgeInsets.only(top: padding),
+                        itemCount: myCakes.length,
+                        itemBuilder: (context, index){
+                          return Container(
+                            margin: EdgeInsets.only(right: padding),
+                            width: 140.0,
+                            child: Column(
+                              children: <Widget>[
+                                // image
+                                Flexible(
+                                  fit: FlexFit.tight,
+                                  child: Container(
+                                    margin: EdgeInsets.only(bottom: padding),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(radius /2),
+                                      image: DecorationImage(
+                                        image: AssetImage(myCakes[index].image),
+                                        fit: BoxFit.fill,
+                                      ),
+                                      boxShadow: [BoxShadow(
+                                        color: Colors.black12,
+                                        spreadRadius: 2.0,
+                                        blurRadius: 2.0,
+                                      )],
+                                    ),
+                                  ),
+                                ),
+
+                                // text
+                                Text(myCakes[index].text,
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 }
+
+class CakeList {
+  String image;
+  String text;
+
+  CakeList({this.image, this.text});
+}
+
+List<CakeList> myCakes = [
+  CakeList(image: "assets/1224/image.jpg", text: "Chocolate",),
+  CakeList(image: "assets/1224/image1.jpg", text: "Fruit",),
+  CakeList(image: "assets/1224/image2.jpg", text: "Pie",),
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
