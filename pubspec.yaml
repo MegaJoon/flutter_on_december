@@ -70,6 +70,13 @@ flutter:
     - assets/1217/image.png
     - assets/1219/image.png
     - assets/1220/image.jpg
+    - assets/1224/backgroundImage.jpg
+    - assets/1224/icon.png
+    - assets/1224/icon1.png
+    - assets/1224/icon2.png
+    - assets/1224/image.jpg
+    - assets/1224/image1.jpg
+    - assets/1224/image2.jpg
 
   fonts:
     - family: San Marino Beach
