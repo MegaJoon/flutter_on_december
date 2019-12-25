@@ -89,10 +89,11 @@ flutter:
     - family: Kitten Bold 400
       fonts:
         - asset: fonts/Kitten Bold 400.ttf
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+    - family: Election Script
+      fonts:
+        - asset: fonts/Election Script.ttf
+    - family: Luna
+      fonts:
+        - asset: fonts/Luna.ttf
 
 
