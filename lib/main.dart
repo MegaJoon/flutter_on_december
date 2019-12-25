@@ -22,6 +22,7 @@ import 'package:flutter_on_december/1220/angry_bird_app.dart';
 import 'package:flutter_on_december/1223/financing_app.dart';
 import 'package:flutter_on_december/1224/cake_app.dart';
 import 'package:flutter_on_december/1225/christmas_box_app.dart';
+import 'package:flutter_on_december/1225/pet_app.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
 //      home: AngryBirdsApp(),  // 12-20
 //      home: FinancingApp(),  // 12-23
 //      home: CakeApp(),  // 12-24
-      home: ChristmasBoxApp(),  // 12-25
+//      home: ChristmasBoxApp(),  // 12-25
+      home: PetApp(),  // 12-25
     );
   }
 }
