@@ -8,19 +8,21 @@ class DribbbleApp extends StatefulWidget {
 }
 
 class _DribbbleAppState extends State<DribbbleApp> with SingleTickerProviderStateMixin {
-  List<String> titles = [
+  // string
+  String title = "dribbble";
+  List<String> text = [
     "hello",
     "hola",
-    "Coryoun",
+    "Coyioun",
   ];
 
   // image
-  String _image = "assets/1226/dribbble.png";
-
+  String _logo = "assets/1226/dribbble.png";
+  
   // color
-  Color _color = Color.fromRGBO(180, 46, 97, 1);
+  Color _color = Color.fromRGBO(195, 35, 95, 1);
 
-  // int cnt
+  // cnt
   int cnt = 0;
 
   // animation
@@ -31,25 +33,24 @@ class _DribbbleAppState extends State<DribbbleApp> with SingleTickerProviderStat
   void initState() {
     _controller = AnimationController(
         duration: Duration(milliseconds: 500),
-        vsync: this,
-    )
+    vsync: this)
     ..forward();
 
     _animation = Tween<double>(begin: 0.0, end: 60.0).animate(
-        CurvedAnimation(
-          parent: _controller,
-          curve: Curves.fastLinearToSlowEaseIn,
-          reverseCurve: Curves.fastOutSlowIn,
-        ),
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.fastLinearToSlowEaseIn,
+        reverseCurve: Curves.fastOutSlowIn,
+      ),
     )
     ..addListener((){
       setState(() {
       });
     })
-    ..addStatusListener((AnimationStatus status) {
-      if (status == AnimationStatus.dismissed)
+    ..addStatusListener((status){
+      if(status == AnimationStatus.dismissed)
         _controller.forward();
-      else if (status == AnimationStatus.completed)
+      else if(status == AnimationStatus.completed)
         _controller.reverse();
 
       // cnt++
@@ -58,7 +59,6 @@ class _DribbbleAppState extends State<DribbbleApp> with SingleTickerProviderStat
         print("cnt = $cnt");
       }
     });
-
     super.initState();
   }
 
@@ -73,17 +73,41 @@ class _DribbbleAppState extends State<DribbbleApp> with SingleTickerProviderStat
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          // image
+          // appbar: title
           Positioned(
-            top: 250.0 - _animation.value,
-            left: MediaQuery.of(context).size.width / 2 - 50.0,
-            height: 100.0,
-            child: Image.asset(
-              _image,
-              fit: BoxFit.fill,
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              top: true,
+              left: true,
+              right: true,
+              child: Center(
+                child: Text(title,
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Election Script",
+
+                  ),
+                ),
+              ),
             ),
           ),
 
+          // image
+          Positioned(
+            top: 250.0 - _animation.value,
+            left: 0,
+            right: 0,
+            height: 100.0,
+            child: Image.asset(
+              _logo,
+              fit: BoxFit.contain,
+            ),
+          ),
+          
           // image shadow
           Positioned(
             top: 350.0,
@@ -105,14 +129,14 @@ class _DribbbleAppState extends State<DribbbleApp> with SingleTickerProviderStat
           Positioned(
             left: 0,
             right: 0,
-            bottom: 150.0,
-            height: 200.0,
+            bottom: 200.0,
+            height: 100.0,
             child: Center(
               child: Text(
 //                cnt.toString(),
-                titles[cnt%3],
+                text[cnt %3],
                 style: TextStyle(
-                  fontSize: 120.0,
+                  fontSize: 100.0,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Election Script",
@@ -125,3 +149,20 @@ class _DribbbleAppState extends State<DribbbleApp> with SingleTickerProviderStat
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
