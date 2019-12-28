@@ -25,6 +25,7 @@ import 'package:flutter_on_december/1225/christmas_box_app.dart';
 import 'package:flutter_on_december/1225/pet_app.dart';
 import 'package:flutter_on_december/1226/dribbble_app_test.dart';
 import 'package:flutter_on_december/1227/dribbble_app.dart';
+import 'package:flutter_on_december/1228/custom_bottom.dart';
 
 void main() => runApp(MyApp());
 
@@ -57,7 +58,8 @@ class MyApp extends StatelessWidget {
 //      home: ChristmasBoxApp(),  // 12-25
 //      home: PetApp(),  // 12-25
 //      home: DribbbleAppTest(),  // 12-26
-      home: DribbbleApp(),  // 12-27
+//      home: DribbbleApp(),  // 12-27
+      home: CustomBottom(),  // 12-28
     );
   }
 }
