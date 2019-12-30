@@ -26,6 +26,7 @@ import 'package:flutter_on_december/1225/pet_app.dart';
 import 'package:flutter_on_december/1226/dribbble_app_test.dart';
 import 'package:flutter_on_december/1227/dribbble_app.dart';
 import 'package:flutter_on_december/1228/custom_bottom.dart';
+import 'package:flutter_on_december/1230/solar_system_ui.dart';
 
 void main() => runApp(MyApp());
 
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
 //      home: DribbbleAppTest(),  // 12-26
 //      home: DribbbleApp(),  // 12-27
       home: CustomBottom(),  // 12-28
+//      home: SolarSystemUI(),  // 12-30
     );
   }
 }
