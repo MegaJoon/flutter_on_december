@@ -13,6 +13,9 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
   // image
   String _backgroundImage = "assets/1230/image.jpg";
 
+  // text
+  String title = "Solar system";
+
   // double
   double padding = 16.0;
   double radius = 20.0;
@@ -51,7 +54,41 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
           ),
 
           // appbar
+          Positioned(
+            top: padding,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              top: true,
+              left: true,
+              right: true,
+              child: Container(
+                height: 40.0,
+                child: Row(
+                  children: <Widget>[
+                    // left icon
+                    IconButton(
+                      onPressed: (){},
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        size: 16.0,
+                        color: Colors.white,
+                      ),
+                    ),
 
+                    // text: title
+                    Text(title,
+                      style: TextStyle(
+                        fontSize: 28.0,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
 
           // Center PageView
           Center(
