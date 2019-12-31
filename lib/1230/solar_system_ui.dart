@@ -110,8 +110,19 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
                         itemCount: items.length,
                         scrollDirection: Axis.horizontal,
                           controller: _pageController,
+                          reverse: true,
                           itemBuilder: (context, index){
-                            return Container();
+                            return Container(
+                              margin: EdgeInsets.only(
+                                left: 180.0,
+                                right: 40.0,
+                                bottom: 250.0,
+                              ),
+                              child: Image.asset(
+                                  items[currentIndex.round()].image,
+                              fit: BoxFit.fill,
+                              ),
+                            );
                           }),
                   ),
                 ],
