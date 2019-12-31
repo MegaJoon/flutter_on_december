@@ -109,7 +109,7 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
                           style: TextStyle(
                             fontSize: 14.0,
                             color: _iconColor,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ],
@@ -152,7 +152,6 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
               ),
             ),
           ),
-
         ],
       ),
     );
