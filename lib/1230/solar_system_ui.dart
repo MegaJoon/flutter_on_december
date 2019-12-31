@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_on_december/1230/card_widget.dart';
 import 'package:flutter_on_december/1230/items_list.dart';
@@ -91,7 +92,11 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
           ),
 
           // Center PageView
-          Center(
+          Positioned(
+            top: 100.0,
+            left: 0,
+            right: 0,
+            bottom: 150.0,
             child: Container(
               height: 400.0,
               child: Stack(
@@ -110,6 +115,31 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
                           }),
                   ),
                 ],
+              ),
+            ),
+          ),
+
+          // dots indicator
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 90.0,
+            child: Container(
+              height: 32.0,
+              child: Center(
+                child: DotsIndicator(
+                  dotsCount: items.length,
+                  position: currentIndex,
+                  axis: Axis.horizontal,
+                  decorator: DotsDecorator(
+                    color: Colors.grey[600].withOpacity(0.50),
+                    activeColor: Colors.brown.withOpacity(0.50),
+                    activeShape: StadiumBorder(),
+                    size: Size(8.0, 8.0),
+                    activeSize: Size(16.0, 8.0),
+                    spacing: EdgeInsets.all(4.0),
+                  ),
+                ),
               ),
             ),
           ),
