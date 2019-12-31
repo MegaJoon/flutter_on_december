@@ -13,6 +13,14 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
   // image
   String _backgroundImage = "assets/1230/image.jpg";
 
+  // double
+  double padding = 16.0;
+  double radius = 20.0;
+
+  // color
+  Color _boxColor = Colors.grey[900];
+  Color _iconColor = Color.fromRGBO(192, 182, 99, 1);
+
   // PageView
   PageController _pageController;
   double currentIndex = items.length - 1.0;
@@ -42,6 +50,9 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
             ),
           ),
 
+          // appbar
+
+
           // Center PageView
           Center(
             child: Container(
@@ -65,6 +76,83 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
               ),
             ),
           ),
+
+          // bottom bar
+          Positioned(
+            left: padding,
+            right: padding,
+            bottom: padding /2,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding /2),
+              height: 72.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(radius),
+                color: _boxColor,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: 64.0,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Icon(
+                          Icons.alternate_email,
+                          size: 28.0,
+                          color: _iconColor,
+                        ),
+
+                        Text("Explore",
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: _iconColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    width: 64.0,
+                    child: Center(
+                      child: Icon(
+                        Icons.search,
+                        size: 28.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    width: 64.0,
+                    child: Center(
+                      child: Icon(
+                        Icons.bookmark_border,
+                        size: 28.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    width: 64.0,
+                    child: Center(
+                      child: Icon(
+                        Icons.alternate_email,
+                        size: 28.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
         ],
       ),
     );
