@@ -7,9 +7,11 @@ class CardWidget extends StatelessWidget {
 
   CardWidget(this.index);
 
+  // double
   final double padding = 16.0;
   final double radius = 24.0;
 
+  // set container color
   _color(double num){
     switch (num.toInt()){
       case 0:
@@ -42,12 +44,13 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> cards = [];
 
+    // for~
     for(int i = 0; i < items.length; i++){
 
       double diff = i - index;
 
-      double positionedRightWidget =
-      (diff > 0)? padding * diff * 30.0 : padding * (2 - diff);
+      double positionedRightWidget = (diff > 0)? padding * diff * 30.0 : padding * (2 - diff);
+
 
       var cardItem = Positioned(
         top: 100.0,
@@ -60,7 +63,6 @@ class CardWidget extends StatelessWidget {
               right: padding * 3,
               bottom: padding * 2,
           ),
-//          width: 410.0 - padding * 2 * (items.length - i),
           width: 350.0 + padding * 2.0 * diff,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(radius),
