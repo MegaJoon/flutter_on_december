@@ -15,39 +15,37 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> cards = [];
 
-    int cnt = (items.length - index.floor() > 3)? 3 : items.length - index.floor();
-    for(int i = 0; i < cnt; i++){
-      double scrollPosition = index - index.floor();
-      double marginX = padding * (2 - i);
-      double positionRight = scrollPosition * padding * 30.0;
+    for(int i = 0; i < items.length; i++){
+
+      double diff = i - index;
+
+      double positionedRightWidget = (diff > 0)? padding * diff * 30.0 : padding /2 * (items.length - i);
+
+      double positionedMargin = padding * (1 - diff);
 
       var cardItem = Positioned(
         top: 0,
-        right: padding * (i + 2),
-        child: Center(
-          child: Container(
-            margin: EdgeInsets.only(top: marginX, left: marginX, right: positionRight),
-            height: 300.0,
-            width: 300.0 + marginX,
-            color: Colors.blue.withOpacity(0.50),
-            child: Center(
-              child: Text(items[index.toInt() + i],
-                style: TextStyle(
-                  fontSize: 40.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+        right: positionedRightWidget,
+        bottom: padding * i,
+
+        child: Container(
+          width: 410.0 - padding * (items.length - i),
+          color: Colors.tealAccent.withOpacity(0.40),
+          child: Center(
+            child: Text(items[i],
+              style: TextStyle(
+                fontSize: 40.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
         ),
       );
-
       cards.add(cardItem);
     }
-
     return Stack(
-      children: cards,
+        children: cards
     );
   }
 }

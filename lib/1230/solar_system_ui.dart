@@ -10,9 +10,12 @@ class SolarSystemUI extends StatefulWidget {
 }
 
 class _SolarSystemUIState extends State<SolarSystemUI> {
+  // image
+  String _backgroundImage = "assets/1230/image.jpg";
+
   // PageView
   PageController _pageController;
-  double currentIndex = 0.0;
+  double currentIndex = items.length - 1.0;
 
   @override
   void initState() {
@@ -29,28 +32,40 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red.withOpacity(0.90),
-      body: Center(
-        child: Container(
-          height: 400.0,
-          child: Stack(
-            children: <Widget>[
-              // main
-              CardWidget(currentIndex),
-
-              // PageView
-              Positioned.fill(
-                  child: PageView.builder(
-                    itemCount: items.length,
-                    scrollDirection: Axis.horizontal,
-                      controller: _pageController,
-                      itemBuilder: (context, index){
-                        return Container();
-                      }),
-              ),
-            ],
+      body: Stack(
+        children: <Widget>[
+          // background image
+          Positioned.fill(
+            child: Image.asset(
+                _backgroundImage,
+                fit: BoxFit.fill,
+            ),
           ),
-        ),
+
+          // Center PageView
+          Center(
+            child: Container(
+              height: 400.0,
+              child: Stack(
+                children: <Widget>[
+                  // main
+                  CardWidget(currentIndex),
+
+                  // PageView
+                  Positioned.fill(
+                      child: PageView.builder(
+                        itemCount: items.length,
+                        scrollDirection: Axis.horizontal,
+                          controller: _pageController,
+                          itemBuilder: (context, index){
+                            return Container();
+                          }),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
