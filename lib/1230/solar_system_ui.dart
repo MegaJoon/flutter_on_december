@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_on_december/1230/card_widget.dart';
 import 'package:flutter_on_december/1230/items_list.dart';
+import 'package:flutter_on_december/1230/second_solar_page.dart';
 
 // https://dribbble.com/shots/9177633-Solar-system-UI
 
@@ -112,15 +113,24 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
                           controller: _pageController,
                           reverse: true,
                           itemBuilder: (context, index){
-                            return Container(
-                              margin: EdgeInsets.only(
-                                left: 180.0,
-                                right: 40.0,
-                                bottom: 250.0,
-                              ),
-                              child: Image.asset(
-                                  items[currentIndex.round()].image,
-                              fit: BoxFit.fill,
+                            return InkWell(
+                              onTap: (){
+                                // move next page
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SecondSolarPage(index)));
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  left: 180.0,
+                                  right: 40.0,
+                                  bottom: 250.0,
+                                ),
+                                child: Image.asset(
+                                    items[currentIndex.round()].image,
+                                fit: BoxFit.fill,
+                                ),
                               ),
                             );
                           }),
