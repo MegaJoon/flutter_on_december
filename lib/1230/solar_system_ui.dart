@@ -94,10 +94,10 @@ class _SolarSystemUIState extends State<SolarSystemUI> {
 
           // Center PageView
           Positioned(
-            top: 100.0,
+            top: 120.0,
             left: 0,
             right: 0,
-            bottom: 150.0,
+            bottom: 130.0,
             child: Container(
               height: 400.0,
               child: Stack(
